@@ -1,0 +1,2 @@
+class LoginCred < ApplicationRecord
+end
