@@ -7,7 +7,6 @@
 3. run ```rails webpacker:compile```
 4. Finally, run ```rails server```
 
-=======
 # README
 
 This README would normally document whatever steps are necessary to get the
