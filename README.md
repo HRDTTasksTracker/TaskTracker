@@ -1,6 +1,11 @@
 <<<<<<< HEAD
 # TaskTracker
-Morgans branch
+# To Run
+
+1. run '''bundle''' while in the applications root directory
+2. run '''rails webpacker:install'''
+3. run '''rails webpacker:compile'''
+
 =======
 # README
 
