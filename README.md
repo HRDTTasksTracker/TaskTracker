@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 # TaskTracker
+
 # To Run
 
 1. run ```bundle``` while in the applications root directory
