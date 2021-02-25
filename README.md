@@ -1,5 +1,7 @@
 # TaskTracker
 
+ruby version 3.0
+
 # If App Fails to Compile
 
 1. run ```bundle``` while in the applications root directory
