@@ -1,10 +1,11 @@
 # TaskTracker
 
-# To Run
+# If App Fails to Compile
 
 1. run ```bundle``` while in the applications root directory
 2. run ```rails webpacker:install```
 3. run ```rails webpacker:compile```
+4. Finally, run ```rails server```
 
 =======
 # README
