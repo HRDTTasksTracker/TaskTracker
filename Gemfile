@@ -34,6 +34,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Use of RSpec for Code Testing. Extra Info: https://rspec.info/
+  gem 'rspec', '>= 3.10.0'
 end
 
 group :development do
@@ -50,6 +52,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Use of SimpleCov for testing. Read more: https://github.com/simplecov-ruby/simplecov
+  gem 'simplecov', '>= 0.21.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
