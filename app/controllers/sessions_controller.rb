@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     #if @user && @user.authenticate(params[:password])
     if @user && @user.password == (params[:password])
-       sessions[:user_id] = @user.id
-       redirect_to '/welcome'
+       session[:user_id] = @user.id
+       redirect_to '/tasks'
     else
        redirect_to '/login'
     end
@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
   end
 
   def login
+  end
+
+  def logout
+    session[:user_id] = -1
   end
 
 end
