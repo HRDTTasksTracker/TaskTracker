@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  get 'tasks/show'
+  resources :users, only: [:new, :create]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'authorized', to: 'sessions#page_requires_login'
+  #get 'tasks/show'
+  get '/loginPage', to: "users#login"
   resources :tasks
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/index", to: "pages#index"
-  #root to: 'pages#index/home'
+  root to: 'sessions#welcome'
 end
