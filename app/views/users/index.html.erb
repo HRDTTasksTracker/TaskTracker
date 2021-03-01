@@ -1,4 +1,6 @@
 <header>
+  <!-- This the top navigation panel -->
+  
   <h2>
     <table>
       <tc>
@@ -37,20 +39,14 @@
   </h2>
 </header>
 
-<h1>Tasks</h1>
-
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
+<h1>Users</h1>
 
 <body>
-  <% @tasks.in_groups_of(3) do |group| %>
+  <% @users.in_groups_of(3) do |group| %>
     <div>
-      <% group.compact.each do |task| %>
+      <% group.compact.each do |user| %>
         <div>
-          <%= task.id %>. <%= task.task_name %>
+          <%= user.id %>. <%= user.full_name %>
         </div>
       <% end %>
     </div>
