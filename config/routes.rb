@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root to: 'sessions#welcome'
 
   resources :tasks
+  resources :valid_emails, only: [:new, :create, :index]
   resources :users#, only: [:new, :create]
 
+  #get 'whitelist/new' to: ''
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'

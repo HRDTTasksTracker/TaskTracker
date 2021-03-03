@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_235321) do
+ActiveRecord::Schema.define(version: 2021_03_03_191451) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "adminpack"
   enable_extension "plpgsql"
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "genre"
-    t.decimal "price"
-    t.string "published"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "roles", force: :cascade do |t|
     t.boolean "admin"
@@ -55,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_02_28_235321) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "password"
+  end
+
+  create_table "valid_emails", force: :cascade do |t|
+    t.string "email"
+    t.boolean "in_use"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

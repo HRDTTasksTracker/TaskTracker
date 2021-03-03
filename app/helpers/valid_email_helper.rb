@@ -1,0 +1,2 @@
+module ValidEmailHelper
+end
