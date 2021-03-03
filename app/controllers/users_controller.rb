@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def index
-        @users = User.all
+        @users = User.all.order(id: :asc)
     end
 
     def show
@@ -17,9 +17,37 @@ class UsersController < ApplicationController
     
     def create
         @user = User.new(user_params)
-        if @user.save
-            session[:user_id] = @user.id
-            redirect_to '/tasks'
+        #check if email is whitlisted
+        @valid_email = ValidEmail.find_by(email: @user.email)
+        if @valid_email != nil && @valid_email.in_use != true
+            if @user.save
+                session[:user_id] = @user.id
+                @valid_email.in_use = true
+                @valid_email.update(email: @valid_email.email, in_use: true)
+                redirect_to '/tasks'
+            else
+                render :new
+            end
+        else
+            render :new
+        end
+    end
+
+    def edit
+        @user = User.find(params[:id])
+        if @user.id != session[:user_id]
+            redirect_to '/users'
+        end
+    end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.id == session[:user_id]
+            if @user.update(user_params)
+                redirect_to '/tasks'
+            else
+                render :new
+            end
         else
             render :new
         end
