@@ -19,11 +19,15 @@ class UsersController < ApplicationController
     
     #creates a new user after form is filled out
     #ensures the user has an email that has been whitelisted
+    #the first user to be created does not
+    #require a whitelisted email
     def create
         @user = User.new(user_params)
+        #check if there are currently any users
+        @search = User.first
         #check if email is whitlisted
         @valid_email = ValidEmail.find_by(email: @user.email)
-        if @valid_email != nil && @valid_email.in_use != true
+        if @valid_email != nil && @valid_email.in_use != true && @search.blank? != true
             if @user.save
                 session[:user_id] = @user.id
                 @valid_email.in_use = true

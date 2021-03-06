@@ -42,7 +42,7 @@
   </h2>
 </header>
 
-<h1>Tasks</h1>
+<h1 class="page-title">Tasks</h1>
 
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
@@ -50,14 +50,32 @@
   </div>
 <% end %>
 
+<div id="overlay">
+  <span title="Create New Task">
+    <a href="tasks/new">
+      <img class="create-button" src="/assets/create-button.png" alt="Create New Task Button" width="110px" height="110px">
+    </a>
+  </span>
+</div>
+
 <!-- This will list all the task id and task names -->
 <body>
-  <% @tasks.in_groups_of(3) do |group| %>
-    <div>
+  <div>
+  <% @tasks.in_groups_of(1) do |group| %>
+    <div class="card-group">
       <% group.compact.each do |task| %>
-        <div>
-          <%= task.id %>. <%= task.task_name %>
+
+        <div class="card">
+          
+          <div class="container">
+            <h4><b> <%=task.task_name%> </b></h4>
+            <p>Task ID: <%=task.id%></p>
+            <p>Due Date: <%=task.due_date%></p>
+            <p>Description: <%=task.task_description%></p>
+            <p>Tag: <%=task.tag%></p>
+          </div>
         </div>
+
       <% end %>
     </div>
   <% end %>
