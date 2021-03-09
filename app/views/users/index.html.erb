@@ -44,15 +44,26 @@
   </h2>
 </header>
 
-<h1>Users</h1>
+<h1 class="user-page-title">Contacts</h1>
 
+<!-- This will list all the users (contacts) as cards -->
 <body>
+  <div>
   <% @users.in_groups_of(3) do |group| %>
-    <div>
+    <div class="card-group">
       <% group.compact.each do |user| %>
-        <div>
-          <%= user.id %>. <%= user.full_name %>
+
+        <div class="card">
+          
+          <div class="container">
+            <h4><b> <%=user.full_name%> </b></h4>
+            <p>User ID: <%=user.id%></p>
+            <p>Role: <%=user.role%></p>
+            <p>Email: <%=user.email%></p>
+            <p>Phone: <%=user.phone%></p>
+          </div>
         </div>
+
       <% end %>
     </div>
   <% end %>

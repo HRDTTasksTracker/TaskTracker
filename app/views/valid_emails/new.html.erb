@@ -44,11 +44,14 @@
   </h2>
 </header>
 
+<!-- The page title empty header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="page-title"><h1>
+
 <div>
   <h2>Whitelist Email</h2>
 
   <%= form_with model: @valid_email do |f| %>
-
     <table>
       <tr>
         <th>Email</th>
@@ -59,6 +62,5 @@
     <div class="form-buttons">
       <%= f.submit("Whitelist Email") %>
     </div>
-
   <% end %>
 </div>
