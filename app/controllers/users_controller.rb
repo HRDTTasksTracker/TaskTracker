@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     #the first user to be created does not
     #require a whitelisted email
     def create
+        @badEmail = false
         @user = User.new(user_params)
         #check if there are currently any users
         @search = User.first
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
                 render :new
             end
         else
+            @badEmail = true
             render :new
         end
     end
