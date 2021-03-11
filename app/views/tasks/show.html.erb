@@ -47,17 +47,15 @@
 
 <!-- The page title header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
-<h1 class="user-page-title"></h1>
+<!--<h1 class="user-page-title"></h1>-->
 
-<h1>Tasks Detatils for Task with ID: <%= @task.id %> </h1>
+<!--<h1>Tasks Detatils for Task with ID: <%= @task.id %> </h1>-->
 
 <div>
   <div>
-    Task Name: <%= @task.task_name %>
-  </div>
-
-  <div>
-    Claimed By: <%= @task.claimed_by %>
+    <h1>
+      <%= @task.task_name %>
+    <h1>
   </div>
 
   <div>
@@ -67,6 +65,12 @@
   <div>
     Due Date: <%= @task.due_date %>
   </div>
+
+  <div>
+    Claimed By: <%= @task.claimed_by %>
+  </div>
+
+
 
   <div>
     Child Task ID: <%= @task.child_task_id %>
