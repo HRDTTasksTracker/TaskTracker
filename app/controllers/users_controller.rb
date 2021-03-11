@@ -22,13 +22,25 @@ class UsersController < ApplicationController
     #the first user to be created does not
     #require a whitelisted email
     def create
+        @badEmail = false
         @user = User.new(user_params)
         #check if there are currently any users
         @search = User.first
         #check if email is whitlisted
         @valid_email = ValidEmail.find_by(email: @user.email)
-        if @valid_email != nil && @valid_email.in_use != true && @search.blank? != true
+        if (@valid_email != nil && @valid_email.in_use != true) || @search.blank? == true
             if @user.save
+                #if this is the first user being made, then
+                #add their email to the whitelist of emails
+                #and set in_use to true and email to user email, then save
+                if @valid_email == nil
+                    @valid_email = ValidEmail.new
+                    @valid_email.email = @user.email
+                    @valid_email.in_use = true
+                    @valid_email.save
+                end
+                #if user already is whitelisted, then
+                #just set in_use to true, then update
                 session[:user_id] = @user.id
                 @valid_email.in_use = true
                 @valid_email.update(email: @valid_email.email, in_use: true)
@@ -37,6 +49,7 @@ class UsersController < ApplicationController
                 render :new
             end
         else
+            @badEmail = true
             render :new
         end
     end

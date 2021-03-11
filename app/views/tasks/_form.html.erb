@@ -11,7 +11,7 @@
 
     <div>
       <%= form.label "Claimed By" %><br>
-      <%= form.number_field :claimed_by %>
+      <%= form.select(:claimed_by, User.all.collect {|c| [ c.full_name, c.id ] }, { include_blank: true }) %>
       <% task.errors.full_messages_for(:claimed_by).each do |message| %>
         <div><%= message %></div>
       <% end %>
@@ -35,7 +35,7 @@
 
     <div>
       <%= form.label "Child Task ID" %><br>
-      <%= form.number_field :child_task_id %>
+      <%= form.select(:child_task_id, Task.all.collect {|c| [ c.task_name, c.id ] }, { include_blank: true }) %>
       <% task.errors.full_messages_for(:child_task_id).each do |message| %>
         <div><%= message %></div>
       <% end %>

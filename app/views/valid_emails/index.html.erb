@@ -46,18 +46,30 @@
 
 <!-- The page title empty header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
-<h1 class="page-title"><h1>
+<h1 class="valid_emails-page-title">Whitelisted Emails</h1>
 
-<h1>Whitelisted Emails</h1>
+<div id="overlay">
+  <span title="Create New Whitelisted Email">
+    <a href="valid_emails/new">
+      <img class="create-button" src="/assets/create-button.png" alt="Create New Whitelisted Email" width="110px" height="110px">
+    </a>
+  </span>
+</div>
 
 <!-- This will list all the whitelisted emails -->
 <body>
-  <% @valid_emails.in_groups_of(3) do |group| %>
-    <div>
+  <div>
+  <% @valid_emails.in_groups_of(1) do |group| %>
+    <div class="card-group">
       <% group.compact.each do |email| %>
-        <div>
-          <%= email.id %>. <%= email.email %>
+
+        <div class="card">
+          <div class="container">
+              <h4><%= email.email %></h4>
+              <p>In Use: <%= email.in_use%></p>
+          </div>
         </div>
+
       <% end %>
     </div>
   <% end %>
