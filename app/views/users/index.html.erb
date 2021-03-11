@@ -1,0 +1,70 @@
+<header>
+  <!-- This the top navigation panel -->
+  
+  <h2>
+    <table>
+      <tc>
+        <td> 
+          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
+        </td>
+      </tc>
+      <tc>
+        <td>
+                  
+        </td>
+      </tc>
+      <tc>
+          <td>
+            <a class="header" href="index.html" >Home</a>
+          </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/tasks">TaskTracker</a>
+        </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/users">Contacts</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="index.html">Help</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="/logout">Sign Out</a>
+        </td>
+      </tc>
+    </table>
+  </h2>
+</header>
+
+<h1 class="user-page-title">Contacts</h1>
+
+<!-- This will list all the users (contacts) as cards -->
+<body>
+  <div>
+  <% @users.in_groups_of(3) do |group| %>
+    <div class="card-group">
+      <% group.compact.each do |user| %>
+
+        <div class="card">
+          
+          <div class="container">
+            <h4><b> <%=user.full_name%> </b></h4>
+            <p>User ID: <%=user.id%></p>
+            <p>Role: <%=user.role%></p>
+            <p>Email: <%=user.email%></p>
+            <p>Phone: <%=user.phone%></p>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</body>

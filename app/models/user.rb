@@ -1,3 +1,6 @@
 class User < ApplicationRecord
-    has_one :login_cred
+    validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
+    validates :email, presence: true
+    validates :password, presence: true, length: { minimum: 6 }
+    validates :full_name, presence: true
 end

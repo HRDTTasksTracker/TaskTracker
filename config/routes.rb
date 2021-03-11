@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  get 'tasks/show'
-  resources :tasks
+  root to: 'sessions#welcome'
 
-  get 'users/create', to:"pages#create"
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :tasks
+  resources :valid_emails, only: [:new, :create, :index]
+  resources :users#, only: [:new, :create]
+
+  #get 'whitelist/new' to: ''
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'logout', to: 'sessions#logout'
+  get 'authorized', to: 'sessions#page_requires_login'
   get "/index", to: "pages#index"
-  #root to: 'pages#index/home'
 end

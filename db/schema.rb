@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_204110) do
+ActiveRecord::Schema.define(version: 2021_03_03_191451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "login_creds", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_login_creds_on_user_id"
-  end
 
   create_table "roles", force: :cascade do |t|
     t.boolean "admin"
@@ -51,7 +42,15 @@ ActiveRecord::Schema.define(version: 2021_02_25_204110) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.string "password"
   end
 
-  add_foreign_key "login_creds", "users"
+  create_table "valid_emails", force: :cascade do |t|
+    t.string "email"
+    t.boolean "in_use"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end
