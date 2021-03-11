@@ -1,0 +1,67 @@
+<!-- Page with form to fill out to make a new account -->
+<div>
+  <h2>Create Account</h2>
+
+  <%= form_with model: @user do |f| %>
+
+    <table summary="Account creation fields">
+      <tr>
+        <th>Full Name<th>
+        <td><%= f.text_field(:full_name) %></td>
+        <% @user.errors.full_messages_for(:full_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td><%= f.text_field(:role) %></td>
+        <% @user.errors.full_messages_for(:role).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+        <% if @badEmail %>
+          <p>Error: Email is not on whitelist.</p>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Discord username</th>
+        <td><%= f.text_field(:discord_username) %></td>
+        <% @user.errors.full_messages_for(:discord_username).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><%= f.text_field(:phone) %></td>
+        <% @user.errors.full_messages_for(:phone).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><%= f.text_field(:username) %></td>
+        <% @user.errors.full_messages_for(:username).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td><%= f.text_field(:password) %></td>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Account") %>
+    </div>
+
+  <% end %>
+</div>

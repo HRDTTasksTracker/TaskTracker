@@ -68,7 +68,6 @@ hr{
     color: #442525;
     width: 75%;
     size: 10px;
-    
 }
 
 colgroup{
@@ -76,11 +75,17 @@ colgroup{
 }
 
 header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+
     font-family: Helvetica, sans-serif;
     vertical-align: top;
     text-align: left;
     background-color: #493335;
-    height: 70px;
+    height: 100px;
+    width: 100vw;
     
 }
 

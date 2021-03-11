@@ -1,0 +1,69 @@
+<header>
+  <!-- This the top navigation panel -->
+  
+  <h2>
+    <table>
+      <tc>
+        <td> 
+          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
+        </td>
+      </tc>
+      <tc>
+        <td>
+                  
+        </td>
+      </tc>
+      <tc>
+          <td>
+            <a class="header" href="index.html" >Home</a>
+          </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/tasks">TaskTracker</a>
+        </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/users">Contacts</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="index.html">Help</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="/logout">Sign Out</a>
+        </td>
+      </tc>
+    </table>
+  </h2>
+</header>
+
+<!-- The page title empty header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="page-title"><h1>
+
+<div>
+  <h2>Whitelist Email</h2>
+
+  <%= form_with model: @valid_email do |f| %>
+    <table>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+        <% @valid_email.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Whitelist Email") %>
+    </div>
+  <% end %>
+</div>

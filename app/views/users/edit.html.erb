@@ -1,0 +1,91 @@
+<header>
+  <h2>
+    <table>
+      <tc>
+        <td> 
+          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
+        </td>
+      </tc>
+      <tc>
+        <td>
+                  
+        </td>
+      </tc>
+      <tc>
+          <td>
+            <a class="header" href="index.html" >Home</a>
+          </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/tasks">TaskTracker</a>
+        </td>
+      </tc>
+
+      <tc>
+        <td>
+          <a class="header" href="/users">Contacts</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="index.html">Help</a>
+        </td>
+      </tc>
+      <tc>
+        <td>
+          <a class="header" href="/logout">Sign Out</a>
+        </td>
+      </tc>
+    </table>
+  </h2>
+</header>
+
+<!-- The page title empty header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="page-title"><h1>
+
+<!-- Page to update user account info -->
+<div>
+  <h2>Update Account</h2>
+
+  <%= form_with model: @user do |f| %>
+
+    <table>
+      <tr>
+        <th>Full name<th>
+        <td><%= f.text_field(:full_name) %></td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td><%= f.text_field(:role) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Discord username</th>
+        <td><%= f.text_field(:discord_username) %></td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><%= f.text_field(:phone) %></td>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><%= f.text_field(:username) %></td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td><%= f.text_field(:password) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Update Account") %>
+    </div>
+
+  <% end %>
+</div>
