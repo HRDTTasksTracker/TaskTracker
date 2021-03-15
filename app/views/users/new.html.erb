@@ -1,63 +1,68 @@
 <!-- Page with form to fill out to make a new account -->
+<h1>Create Account</h1>
+
 <div>
-  <h2>Create Account</h2>
-
   <%= form_with model: @user do |f| %>
+    
+    <div>
+      <%= f.label 'Full Name' %><br>
+      <%= f.text_field(:full_name) %>
+      <% @user.errors.full_messages_for(:full_name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-    <table summary="Account creation fields">
-      <tr>
-        <th>Full Name<th>
-        <td><%= f.text_field(:full_name) %></td>
-        <% @user.errors.full_messages_for(:full_name).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Role</th>
-        <td><%= f.text_field(:role) %></td>
-        <% @user.errors.full_messages_for(:role).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Email</th>
-        <td><%= f.text_field(:email) %></td>
-        <% @user.errors.full_messages_for(:email).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-        <% if @badEmail %>
-          <p>Error: Email is not on whitelist.</p>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Discord username</th>
-        <td><%= f.text_field(:discord_username) %></td>
-        <% @user.errors.full_messages_for(:discord_username).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Phone</th>
-        <td><%= f.text_field(:phone) %></td>
-        <% @user.errors.full_messages_for(:phone).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Username</th>
-        <td><%= f.text_field(:username) %></td>
-        <% @user.errors.full_messages_for(:username).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-      <tr>
-        <th>Password</th>
-        <td><%= f.text_field(:password) %></td>
-        <% @user.errors.full_messages_for(:password).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </tr>
-    </table>
+    <!-- If current user is member, do not allow selection of admin or moderator -->
+    <div>
+    <%= f.label 'Role' %><br>
+      <%= f.select(:role, Role.all.reject {|role| (role.role_name == 'admin' || role.role_name == 'moderator')}.map(&:role_name), { include_blank: false }) %>
+      <% @user.errors.full_messages_for(:role).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label 'Email' %><br>
+      <%= f.text_field(:email) %>
+      <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+      <% if @badEmail %>
+        <p>Error: Email is not on whitelist.</p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label 'Discord Username' %><br>
+      <%= f.text_field(:discord_username) %>
+      <% @user.errors.full_messages_for(:discord_username).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label 'Phone' %><br>
+      <%= f.text_field(:phone) %>
+      <% @user.errors.full_messages_for(:phone).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label 'Username' %><br>
+      <%= f.text_field(:username) %>
+      <% @user.errors.full_messages_for(:username).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label 'Password' %><br>
+      <%= f.text_field(:password) %>
+      <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
     <div class="form-buttons">
       <%= f.submit("Create Account") %>
