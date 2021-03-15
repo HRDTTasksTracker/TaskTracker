@@ -80,4 +80,19 @@
     Tag: <%= @task.tag %>
   </div>
 
+  <% if current_user.role == 'Admin' %>
+    <div>
+      <a href="/tasks/<%= @task.id %>/edit"> Edit 
+    <div>
+    <div>
+      <%= link_to "Delete", task_path(@task),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+    <div>
+  <% end %>
+    
+  
+
+
+
 </div>
