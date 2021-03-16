@@ -80,7 +80,7 @@
     Tag: <%= @task.tag %>
   </div>
 
-  <% if current_user.role == 'Admin' %>
+  <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
     <div>
       <a href="/tasks/<%= @task.id %>/edit"> Edit 
     <div>
