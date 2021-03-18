@@ -16,6 +16,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       redirect_to @task
+      Node.initialize(@task)
     else
       render :new
     end
