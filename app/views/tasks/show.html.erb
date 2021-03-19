@@ -119,7 +119,7 @@
     </div>
   <% end %>
 
-  <% if current_user.role == 'admin' || current_user.role == 'Gamer' %>
+  <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
     <div>
       <a href="/tasks/<%= @task.id %>/edit"> Edit 
     <div>
