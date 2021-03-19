@@ -1,3 +1,6 @@
+
+
+
 <!-- This page will list out attributes of a particualar task -->
 
 <!-- Navigation bar -->
@@ -79,6 +82,42 @@
   <div>
     Tag: <%= @task.tag %>
   </div>
+
+  <% if @task.claimed_by == nil %>
+    <div>
+      <%= form_with model: @task do |form| %>
+
+      <div>
+        <%= form.hidden_field(:claimed_by, value: current_user.id) %>
+        <% @task.errors.full_messages_for(:claimed_by).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.button :"Claim Task" %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @task.claimed_by == current_user.id %>
+    <div>
+      <%= form_with model: @task do |form| %>
+
+      <div>
+        <%= form.hidden_field(:claimed_by, value: nil) %>
+        <% @task.errors.full_messages_for(:claimed_by).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.button :"Unclaim Task" %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
 
   <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
     <div>
