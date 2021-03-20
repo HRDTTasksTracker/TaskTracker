@@ -15,8 +15,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+      @node = Node.new(@task.task_name)
       redirect_to @task
-      Node.initialize(@task)
+      
     else
       render :new
     end
