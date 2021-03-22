@@ -1,7 +1,16 @@
+require 'Graph.rb'
 class TasksController < ApplicationController
   def index
     # Returns all tasks in order by id
     @tasks = Task.order(id: :asc)
+    @nodes = Node.order(id: :asc)
+    @graph = Graph.new
+    @nodes.each do |row|
+     # @graph.add_node(row.id)
+    end
+
+      
+
   end
 
   def show
@@ -15,7 +24,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @node = Node.new(@task.task_name)
+      @node = Node.new(node_params)
+      @node.update(adjacent_nodes: [@task.child_task_id])
+      @node.save
       redirect_to @task
       
     else
@@ -47,4 +58,11 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:task_name, :claimed_by, :child_task_id, :due_date, :task_description, :tag)
     end
+    def node_params
+      params.require(:task).permit(:task_name)
+    end
+    def node_params1
+      params.require(:node).permit(:task_name)
+    end
+
 end

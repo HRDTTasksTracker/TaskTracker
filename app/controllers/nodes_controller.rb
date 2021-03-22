@@ -1,4 +1,4 @@
-class NodesController < ApplicationController
+class NodesController < ActionController::Base
   
     attr_reader :value
     
