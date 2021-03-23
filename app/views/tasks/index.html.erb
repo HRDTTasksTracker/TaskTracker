@@ -280,61 +280,8 @@ pool.connect((err, client, done) => {
     line4,
     line5;
 
-  // Drag Nodes
 
-  // Drag Nodes and redraw lines
-  new PlainDraggable(node_1, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-      line3.position();
-    },
-
-  });
-
-  new PlainDraggable(node_2, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
-    }
-  });
-
-  new PlainDraggable(node_3, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-      line3.position();
-      line4.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
-    }
-  });
-  new PlainDraggable(node_4, {
-    onMove: function() {
-      line3.position();
-      line5.position();
-    },
-
-  });
-
-
-  new PlainDraggable(node_5_tim, {
-    onMove: function() {
-      line4.position();
-      line5.position();
-    },
-
-  });
-  
-
-
-  line1 = new LeaderLine(slot2_in, slot1_out, {
+    line1 = new LeaderLine(slot2_in, slot1_out, {
     startPlug: "behind",
     endPlug: "behind",
     size: 4,
@@ -398,6 +345,67 @@ pool.connect((err, client, done) => {
     //path: "straight"
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
   });
+
+
+
+
+  
+
+  // Drag Nodes
+
+  // Drag Nodes and redraw lines
+  new PlainDraggable(node_1, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+    },
+
+  });
+
+  new PlainDraggable(node_2, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
+    onDragEnd: function() {
+      line.dash = false;
+    }
+  });
+
+  new PlainDraggable(node_3, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+      line4.position();
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
+    onDragEnd: function() {
+      line.dash = false;
+    }
+  });
+  new PlainDraggable(node_4, {
+    onMove: function() {
+      line3.position();
+      line5.position();
+    },
+
+  });
+
+
+  new PlainDraggable(node_5_tim, {
+    onMove: function() {
+      line4.position();
+      line5.position();
+    },
+
+  });
+  
+
+
+  
 
 
 
