@@ -1,16 +1,24 @@
 window.addEventListener("load", function() {
   "use strict";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> gui2
 var oldButton=document.getElementById('addButton');
 var oldLine;
 var elem = 1;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gui2
 document.getElementById('addButton').addEventListener('click', addButtonToContainer);
 
 
 function addButtonToContainer() {
+<<<<<<< HEAD
 
 
     const container = document.getElementById('container');
@@ -38,11 +46,44 @@ function addButtonToContainer() {
       oldLine.position();
     }
     
+=======
+    const container = document.getElementById('container');
+    var button1 = document.createElement('button');
+    button1.innerText = 'Task '+ elem;
+    elem = elem+1;
+
+    container.appendChild(button1);
+    var lineTim;
+
+ 
+
+ lineTim = new LeaderLine(button1, oldButton, {
+    startPlug: "behind",
+    endPlug: "behind",
+    size: 4,
+    startPlugSize: 1,
+    endPlugSize: 1,
+    startSocket: "left",
+    endSocket: "right",    
+    color: "#30c117"
+    // path: 'grid',
+    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+  });
+
+
+    new PlainDraggable(button1, {
+    onMove: function() {
+      lineTim.position();
+      oldLine.position();
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
+>>>>>>> gui2
   
   });
 
     
 
+<<<<<<< HEAD
  oldButton=currentButton;
  oldLine=currentLine;
 
@@ -79,6 +120,12 @@ pool.connect((err, client, done) => {
 
 
 
+=======
+ oldButton=button1;
+ oldLine=lineTim;
+
+}
+>>>>>>> gui2
 
   var slot1_out = document.getElementById("slot-anchor-4"),
     slot2_in = document.getElementById("slot-anchor-2-tim"),
@@ -101,6 +148,7 @@ pool.connect((err, client, done) => {
     line4,
     line5;
 
+<<<<<<< HEAD
   // Drag Nodes
 
   // Drag Nodes and redraw lines
@@ -156,6 +204,10 @@ pool.connect((err, client, done) => {
 
 
   line1 = new LeaderLine(slot2_in, slot1_out, {
+=======
+
+      line1 = new LeaderLine(slot2_in, slot1_out, {
+>>>>>>> gui2
     startPlug: "behind",
     endPlug: "behind",
     size: 4,
@@ -164,8 +216,12 @@ pool.connect((err, client, done) => {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117"
+<<<<<<< HEAD
     // path: 'grid',
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+=======
+   
+>>>>>>> gui2
   });
   line2 = new LeaderLine(slot3_in, slot2_out, {
     startPlug: "behind",
@@ -176,8 +232,12 @@ pool.connect((err, client, done) => {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117"
+<<<<<<< HEAD
     // path: 'grid',
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+=======
+ 
+>>>>>>> gui2
   });
 
   
@@ -190,8 +250,12 @@ pool.connect((err, client, done) => {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117",
+<<<<<<< HEAD
     //path: "straight"
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+=======
+   
+>>>>>>> gui2
   });
 
    line4 = new LeaderLine(node3_out, node_5_tim_in, {
@@ -203,8 +267,12 @@ pool.connect((err, client, done) => {
     startSocket: "left",
     endSocket: "left",
     color: "#30c117",
+<<<<<<< HEAD
     //path: "straight"
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+=======
+    
+>>>>>>> gui2
   });
 
   line5 = new LeaderLine(node4_out, node_5_tim_in, {
@@ -216,6 +284,7 @@ pool.connect((err, client, done) => {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117",
+<<<<<<< HEAD
     //path: "straight"
     // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
   });
@@ -224,5 +293,58 @@ pool.connect((err, client, done) => {
 
 
 
+=======
+    
+  });
+
+  // Drag Nodes
+
+  // Drag Nodes and redraw lines
+  new PlainDraggable(node_1, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+    },
+
+  });
+
+  new PlainDraggable(node_2, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
+    onDragEnd: function() {
+      line.dash = false;
+    }
+  });
+
+  new PlainDraggable(node_3, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+      line4.position();
+    }
+  });
+  new PlainDraggable(node_4, {
+    onMove: function() {
+      line3.position();
+      line5.position();
+    },
+
+  });
+
+
+  new PlainDraggable(node_5_tim, {
+    onMove: function() {
+      line4.position();
+      line5.position();
+    },
+
+  });
+  
+>>>>>>> gui2
   
 });

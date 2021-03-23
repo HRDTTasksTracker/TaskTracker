@@ -1,9 +1,177 @@
+<style type="text/css">
+  
+body {
+  min-height: 1600px;
+  min-width: 1600px;
+}
+.leader-line {
+  z-index: -1;
+}
+.node {
+  height: auto;
+  position: absolute;
+  min-width: 100px;
+  max-width: 250px;
+  background: #d8d8d8;
+  margin: 10px;
+}
+.label {
+  flex: 100px;
+  min-width: 100px;
+  max-width: 250px;
+}
+.node-name .label {
+  flex: 100px;
+  min-width: 100px;
+  max-width: 250px;
+  padding: 0 5px;
+  border: 3px #5b5b5b solid;
+}
+
+.label-text {
+  padding: 0 5px;
+}
+.slot-button {
+  padding: 4px 4px 4px 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 4px #8e8e8e solid;
+  color: #5b5b5b;
+}
+.slot-config {
+  padding: 4px 4px 4px 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px #8e8e8e solid;
+  color: #5b5b5b;
+  border-radius: 30px;
+}
+.field-active,
+.field-inactive {
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: #fff;
+  color: #5b5b5b;
+  text-transform: none;
+  font-style: italic;
+}
+.field-inactive {
+  border: 3px #5b5b5b solid;
+  background: #ccc;
+  color: #5b5b5b;
+  text-transform: none;
+  font-style: italic;
+}
+.slot-active,
+.slot-inactive {
+  padding: 4px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: 3px #5b5b5b solid;
+  background: #fff;
+  color: #5b5b5b;
+}
+.slot-inactive {
+  background: #8e8e8e;
+  border: 3px #8e8e8e solid;
+  color: #fff;
+}
+.slot:last-child {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.elevation-3 {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.small {
+  width: 8px;
+  height: 8px;
+  border-width: 4px;
+  border-color: #d8d8d8;
+  border-style: solid;
+}
+.name {
+  width: 22px;
+  height: 22px;
+  border-width: 3px;
+  border-color: #d8d8d8;
+  border-style: solid;
+}
+.active {
+  background: #30c117;
+  border-color: #30c117;
+  border-style: solid;
+}
+
+
+.node-name {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0px 0px;
+  text-transform: uppercase;
+  color: #dddddd;
+  background: #5b5b5b;
+  margin: 0;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.node-name.slot-active {
+  border-style: none;
+}
+
+.node-name.slot-active .slot-anchor-node-name.slot-anchor-active {
+  background: #30c117;
+  border-color: #30c117;
+  border-style: solid;
+}
+
+
+
+</style>
 <header>
 
+<<<<<<< HEAD
 <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
 <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= stylesheet_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+=======
+
+<%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
+<%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
+<%= javascript_include_tag 'tasks.js', 'data-turbolinks-track' => true %>
+
+
+>>>>>>> gui2
 
   <h2>
     <table>
@@ -88,3 +256,97 @@
     </div>
   <% end %>
 </body>
+
+
+<body id="container">
+
+  <button id="addButton">
+Add Button
+</button>
+
+
+
+  <!-- Node 1 -->
+  <div id="node_1" class="node" style="">
+    <div class="node-name" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div class="name inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 1</div>
+      <div id="slot-anchor-4" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+    </div>
+    <div class="slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 1</span></div>
+      
+    </div>
+  
+      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+    </div>
+  </div>
+  <!-- Node 1 End -->
+  <!-- Node 2 -->
+  <div id="node_2" class="node" style=" transform: translate(259px, 231px);">
+    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="slot-anchor-2-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 2</div>
+      <div id="slot-anchor-2-out-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+    </div>
+    <div class="slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="removed" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 2</span></div>
+     
+    </div>
+  </div>
+  <!-- Node 2 End-->
+  <!-- Node 3 -->
+  <div id="node_3" class="node" style=" transform: translate(503px, 61px);">
+    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="slot-anchor-3-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 3</div>
+       <div id="slot-anchor-3-out-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      
+    </div>
+    
+    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="slot-anchor-3" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"> </div>
+      
+        <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 3</span></div>
+
+    </div>
+ 
+  </div>
+  <!-- Node 3 End -->
+  <!-- Node 4 -->
+  <div id="node_4" class="node" style=" transform: translate(794px, 17px);">
+    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="slot-anchor-5" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 4</div>
+      <div id="slot-anchor-5-out" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+    </div>
+    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="node_4_slot1_in" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 4</span></div>
+     
+  </div>
+</div>
+  <!-- Node 4 End -->
+ <div id="node_5_tim" class="node" style=" transform: translate(900px, 317px);">
+    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div id="node_5_tim_in" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 5</div>
+      <div class="name inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+    </div>
+    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
+      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
+      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 5</span>
+        <button id="database">Open</button></div>
+     
+  </div>
+
+  <script type="text/javascript">
+
+
+  </script>
+
+  
+</body>
+
