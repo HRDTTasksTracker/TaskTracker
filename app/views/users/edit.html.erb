@@ -73,14 +73,25 @@
 
     <% if @currentUser.role == 'admin' %>
 
-      <!-- If current user is admin, allow them to select any role -->
-      <div>
-        <%= f.label 'Role' %><br>
-        <%= f.select(:role, Role.all.collect {|c| [ c.role_name, c.role_name ] }, { include_blank: false }) %>
-        <% @user.errors.full_messages_for(:role).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </div>
+      <!-- If current user is admin, allow to select any role unless last admin -->
+      <% if (User.where(role: 'admin').count == 1 && @user.role == 'admin') %>
+        <div><p></p></div>
+        <div>
+          <p>
+          You can not edit role because you are the last admin.<br>
+          Must be at least one admin at all times.
+          </p>
+        </div>
+        <div><p></p></div>
+      <% else %>
+        <div>
+          <%= f.label 'Role' %><br>
+          <%= f.select(:role, Role.all.collect {|c| [ c.role_name, c.role_name ] }, { include_blank: false }) %>
+          <% @user.errors.full_messages_for(:role).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      <% end %>
 
     <% else %>
       <% if @currentUser.role == 'moderator' %>
