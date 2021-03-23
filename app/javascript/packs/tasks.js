@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+      window.addEventListener("load", function() {
   "use strict";
 
 var oldButton=document.getElementById('addButton');
@@ -51,34 +51,7 @@ function addButtonToContainer() {
 
 
 // Demo Code Below, Will remove later on
-/*
-document.getElementById('database').addEventListener('click', pullData);
 
-
-function pullData() {
-
-  const pg = require('pg')
-const config = {
-    database: 'node_test'
-}
-const pool = new pg.Pool(config);
-pool.connect((err, client, done) => {
-    if (err) throw err;
-    client.query('SELECT  full_name FROM  user', (err, res) => {
-        if (err)
-            console.log(err.stack);
-        else {
-            console.log(res.rows);
-        }
-        pool.end()
-    })
-})
-
-
-  }
-
-
-*/
 
   var slot1_out = document.getElementById("slot-anchor-4"),
     slot2_in = document.getElementById("slot-anchor-2-tim"),
@@ -101,61 +74,8 @@ pool.connect((err, client, done) => {
     line4,
     line5;
 
-  // Drag Nodes
 
-  // Drag Nodes and redraw lines
-  new PlainDraggable(node_1, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-      line3.position();
-    },
-
-  });
-
-  new PlainDraggable(node_2, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
-    }
-  });
-
-  new PlainDraggable(node_3, {
-    onMove: function() {
-      line1.position();
-      line2.position();
-      line3.position();
-      line4.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
-    }
-  });
-  new PlainDraggable(node_4, {
-    onMove: function() {
-      line3.position();
-      line5.position();
-    },
-
-  });
-
-
-  new PlainDraggable(node_5_tim, {
-    onMove: function() {
-      line4.position();
-      line5.position();
-    },
-
-  });
-  
-
-
-  line1 = new LeaderLine(slot2_in, slot1_out, {
+    line1 = new LeaderLine(slot2_in, slot1_out, {
     startPlug: "behind",
     endPlug: "behind",
     size: 4,
@@ -224,5 +144,49 @@ pool.connect((err, client, done) => {
 
 
 
+
+  // Drag Nodes
+
+  // Drag Nodes and redraw lines
+  new PlainDraggable(node_1, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+    },
+
+  });
+
+  new PlainDraggable(node_2, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+    }
+  });
+
+  new PlainDraggable(node_3, {
+    onMove: function() {
+      line1.position();
+      line2.position();
+      line3.position();
+      line4.position();
+    }
+  });
+  new PlainDraggable(node_4, {
+    onMove: function() {
+      line3.position();
+      line5.position();
+    },
+
+  });
+
+
+  new PlainDraggable(node_5_tim, {
+    onMove: function() {
+      line4.position();
+      line5.position();
+    },
+
+  });
   
-});
+
