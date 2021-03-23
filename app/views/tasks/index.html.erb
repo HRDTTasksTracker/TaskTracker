@@ -500,10 +500,6 @@ function addButtonToContainer() {
     onMove: function() {
       line1.position();
       line2.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
     }
   });
 
@@ -513,10 +509,6 @@ function addButtonToContainer() {
       line2.position();
       line3.position();
       line4.position();
-    },
-    // onMoveStart: function() { line.dash = {animation: true}; },
-    onDragEnd: function() {
-      line.dash = false;
     }
   });
   new PlainDraggable(node_4, {
