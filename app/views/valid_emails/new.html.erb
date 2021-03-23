@@ -56,6 +56,9 @@
       <tr>
         <th>Email</th>
         <td><%= f.text_field(:email) %></td>
+        <% @valid_email.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
       </tr>
     </table>
 
