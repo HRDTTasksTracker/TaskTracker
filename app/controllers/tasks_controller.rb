@@ -1,14 +1,16 @@
 class TasksController < ApplicationController
   def index
     # Returns all tasks in order by id
-    @tasks = Task.order(id: :asc)
-    #Returns all nodes stored in the nodes table
+    @tasks = Task.order(id: :asc)   #Returns all nodes stored in the nodes table
     @nodes = Node.order(id: :asc)
-    @graph = Graph.new
+    @graph = Graph.new  #new graph tree created
     @nodes.each do |row|
-      @graph.add_node(row.task_name,row.id)      #adding the node to graph
-      
+      @graph.add_node(row)      #adding the node to graph
+
+
     end
+
+    #now graph object contains all the nodes( task name , child task id) within the object.  
 
       
 
@@ -71,13 +73,13 @@ class TasksController < ApplicationController
         @vertices = {}
       end
         
-      def add_node(vertex,location)
-        @vertices[location] = vertex
+      def add_node(vertex)
+        @vertices[vertex] = vertex
       end
         
       def add_edge(node1, node2)
-        @nodes[node1].add_edge(@nodes[node2])
-        @nodes[node2].add_edge(@nodes[node1])
+        @vertices[node1].update(adjacent_nodes: node2.id)
+        @vertices[node2].add_edge(@nodes[node1])
       end
         
     end
