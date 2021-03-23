@@ -1,12 +1,13 @@
-require 'Graph.rb'
 class TasksController < ApplicationController
   def index
     # Returns all tasks in order by id
     @tasks = Task.order(id: :asc)
+    #Returns all nodes stored in the nodes table
     @nodes = Node.order(id: :asc)
     @graph = Graph.new
     @nodes.each do |row|
-     # @graph.add_node(row.id)
+      @graph.add_node(row.task_name,row.id)      #adding the node to graph
+      
     end
 
       
@@ -63,6 +64,22 @@ class TasksController < ApplicationController
     end
     def node_params1
       params.require(:node).permit(:task_name)
+    end
+  
+    class Graph
+      def initialize
+        @vertices = {}
+      end
+        
+      def add_node(vertex,location)
+        @vertices[location] = vertex
+      end
+        
+      def add_edge(node1, node2)
+        @nodes[node1].add_edge(@nodes[node2])
+        @nodes[node2].add_edge(@nodes[node1])
+      end
+        
     end
 
 end

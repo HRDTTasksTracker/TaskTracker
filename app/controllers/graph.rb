@@ -1,10 +1,10 @@
 class Graph
   def initialize
-    @nodes = {}
+    @vertices = {}
   end
     
-  def add_node(node)
-    @nodes[node] = node
+  def add_node(@vertex)
+    @vertices << @vertex
   end
     
   def add_edge(node1, node2)
