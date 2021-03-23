@@ -1,57 +1,54 @@
-      window.addEventListener("load", function() {
+window.addEventListener("load", function() {
   "use strict";
+
 
 var oldButton=document.getElementById('addButton');
 var oldLine;
 var elem = 1;
 
-
-
 document.getElementById('addButton').addEventListener('click', addButtonToContainer);
 
 
 function addButtonToContainer() {
-
-
     const container = document.getElementById('container');
-    var currentButton = document.createElement('button');
-    currentButton.innerText = 'Task '+ elem;
+    var button1 = document.createElement('button');
+    button1.innerText = 'Task '+ elem;
     elem = elem+1;
-    container.appendChild(currentButton);
-    var currentLine;
 
+    container.appendChild(button1);
+    var lineTim;
 
- currentLine = new LeaderLine(currentButton, oldButton, {
+ 
+
+ lineTim = new LeaderLine(button1, oldButton, {
     startPlug: "behind",
     endPlug: "behind",
     size: 4,
+    startPlugSize: 1,
+    endPlugSize: 1,
     startSocket: "left",
     endSocket: "right",    
     color: "#30c117"
-  
+    // path: 'grid',
+    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
   });
 
 
-    new PlainDraggable(currentButton, {
+    new PlainDraggable(button1, {
     onMove: function() {
-      currentLine.position();
+      lineTim.position();
       oldLine.position();
-    }
-    
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
   
   });
 
     
 
- oldButton=currentButton;
- oldLine=currentLine;
+ oldButton=button1;
+ oldLine=lineTim;
 
 }
-
-
-
-// Demo Code Below, Will remove later on
-
 
   var slot1_out = document.getElementById("slot-anchor-4"),
     slot2_in = document.getElementById("slot-anchor-2-tim"),
@@ -75,7 +72,7 @@ function addButtonToContainer() {
     line5;
 
 
-    line1 = new LeaderLine(slot2_in, slot1_out, {
+      line1 = new LeaderLine(slot2_in, slot1_out, {
     startPlug: "behind",
     endPlug: "behind",
     size: 4,
@@ -84,8 +81,7 @@ function addButtonToContainer() {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117"
-    // path: 'grid',
-    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+   
   });
   line2 = new LeaderLine(slot3_in, slot2_out, {
     startPlug: "behind",
@@ -96,8 +92,7 @@ function addButtonToContainer() {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117"
-    // path: 'grid',
-    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+ 
   });
 
   
@@ -110,8 +105,7 @@ function addButtonToContainer() {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117",
-    //path: "straight"
-    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+   
   });
 
    line4 = new LeaderLine(node3_out, node_5_tim_in, {
@@ -123,8 +117,7 @@ function addButtonToContainer() {
     startSocket: "left",
     endSocket: "left",
     color: "#30c117",
-    //path: "straight"
-    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+    
   });
 
   line5 = new LeaderLine(node4_out, node_5_tim_in, {
@@ -136,14 +129,8 @@ function addButtonToContainer() {
     startSocket: "left",
     endSocket: "right",
     color: "#30c117",
-    //path: "straight"
-    // dropShadow: {color: '#111', dx: 0, dy: 2, blur: 0.2}
+    
   });
-
-
-
-
-
 
   // Drag Nodes
 
@@ -161,6 +148,10 @@ function addButtonToContainer() {
     onMove: function() {
       line1.position();
       line2.position();
+    },
+    // onMoveStart: function() { line.dash = {animation: true}; },
+    onDragEnd: function() {
+      line.dash = false;
     }
   });
 
@@ -189,4 +180,5 @@ function addButtonToContainer() {
 
   });
   
-
+  
+});
