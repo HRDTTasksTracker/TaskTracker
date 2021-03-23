@@ -51,7 +51,7 @@ function addButtonToContainer() {
 
 
 // Demo Code Below, Will remove later on
-
+/*
 document.getElementById('database').addEventListener('click', pullData);
 
 
@@ -78,7 +78,7 @@ pool.connect((err, client, done) => {
   }
 
 
-
+*/
 
   var slot1_out = document.getElementById("slot-anchor-4"),
     slot2_in = document.getElementById("slot-anchor-2-tim"),
