@@ -12,14 +12,25 @@
       <% end %>
     </div>
 
-    <!-- If current user is member, do not allow selection of admin or moderator -->
-    <div>
-    <%= f.label 'Role' %><br>
-      <%= f.select(:role, Role.all.reject {|role| (role.role_name == 'admin' || role.role_name == 'moderator')}.map(&:role_name), { include_blank: false }) %>
-      <% @user.errors.full_messages_for(:role).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+    <!-- Force first user to be admin -->
+    <% if User.count == 0 %>
+      <div>
+      <%= f.label 'Role' %><br>
+        <%= f.select(:role, Role.all.reject {|role| (role.role_name != 'admin')}.map(&:role_name), { include_blank: false }) %>
+        <% @user.errors.full_messages_for(:role).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <!-- otherwise hide admin and moderator choices -->
+    <% else %>
+      <div>
+      <%= f.label 'Role' %><br>
+        <%= f.select(:role, Role.all.reject {|role| (role.role_name == 'admin' || role.role_name == 'moderator')}.map(&:role_name), { include_blank: false }) %>
+        <% @user.errors.full_messages_for(:role).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
 
     <div>
       <%= f.label 'Email' %><br>
