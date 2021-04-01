@@ -16,7 +16,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  def new 
+  def new
+    if logged_in?
+      redirect_to '/tasks'
+    end
   end
 
   def page_requires_login
