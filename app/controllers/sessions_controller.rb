@@ -23,6 +23,15 @@ class SessionsController < ApplicationController
   end
 
   def login
+    if logged_in?
+      redirect_to '/tasks'
+    end
+  end
+
+  def welcome
+    if logged_in?
+      redirect_to '/tasks'
+    end
   end
 
   def logout
