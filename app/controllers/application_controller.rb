@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class ApplicationController < ActionController::Base
   # the function authorized will run before
   # any action in any controller

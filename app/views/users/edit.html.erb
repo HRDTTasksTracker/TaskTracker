@@ -46,10 +46,10 @@
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="page-title"><h1>
 
-<% if @currentUser.role == 'admin' %>
+<% if current_user.role == 'admin' %>
   <h1>Update <%=@user.full_name%>'s Account (Admin Privilages)</h1>
 <% else %>
-  <% if @currentUser.role == 'moderator' %>
+  <% if current_user.role == 'moderator' %>
     <h1>Update <%=@user.full_name%>'s Account (Moderator Privilages)</h1>
   <% else %>
     <h1>Update Your Account</h1>
@@ -61,7 +61,7 @@
   <%= form_with model: @user do |f| %>
     
     <!-- If user is a moderator, do not allow them to edit Full Name field -->
-    <% if (@currentUser.id == @user.id || @currentUser.role == 'admin') %>
+    <% if (current_user.id == @user.id || current_user.role == 'admin') %>
       <div>
         <%= f.label 'Full Name' %><br>
         <%= f.text_field(:full_name) %>
@@ -71,7 +71,7 @@
       </div>
     <% end %>
 
-    <% if @currentUser.role == 'admin' %>
+    <% if current_user.role == 'admin' %>
 
       <!-- If current user is admin, allow to select any role unless last admin -->
       <% if (User.where(role: 'admin').count == 1 && @user.role == 'admin') %>
@@ -94,7 +94,7 @@
       <% end %>
 
     <% else %>
-      <% if @currentUser.role == 'moderator' %>
+      <% if current_user.role == 'moderator' %>
 
         <!-- If current user is moderator, allow them to select any role but not admin -->
         <!-- Do not let a moderator edit an admins role -->
@@ -123,7 +123,7 @@
     <% end %>
 
     <!-- If user is a moderator, do not allow them to edit below fields -->
-    <% if (@currentUser.id == @user.id || @currentUser.role == 'admin') %>
+    <% if (current_user.id == @user.id || current_user.role == 'admin') %>
       <div>
         <%= f.label 'Email' %><br>
         <%= f.text_field(:email) %>
@@ -161,7 +161,7 @@
     <% end %>
 
     <!-- Only show password to the password owner (not even admin can see others passwords) -->
-    <% if @currentUser.id == @user.id %>
+    <% if current_user.id == @user.id %>
       <div>
         <%= f.label 'Password' %><br>
         <%= f.text_field(:password, class: "formfield") %>
@@ -171,7 +171,7 @@
       </div>
     <% end %>
 
-    <% if ((@currentUser.id == @user.id || @currentUser.role == 'admin') || (@user.role != 'admin' && @currentUser.role == 'moderator')) %>
+    <% if ((current_user.id == @user.id || current_user.role == 'admin') || (@user.role != 'admin' && current_user.role == 'moderator')) %>
       <div class="form-buttons">
         <%= f.submit("Update Account") %>
       </div>

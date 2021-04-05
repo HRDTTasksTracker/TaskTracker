@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # the first user to be created does not
   # require a whitelisted email
   def create
-    @badEmail = false
+    @bad_email = false
     @user = User.new(user_params)
     # check if there are currently any users
     @search = User.first
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
         render :new
       end
     else
-      @badEmail = true
+      @bad_email = true
       render :new
     end
   end
@@ -77,18 +77,16 @@ class UsersController < ApplicationController
   # user can edit users, but this guarentees the user can only
   # edit their own information
   def edit
-    @currentUser = current_user
     @user = User.find(params[:id])
-    if @user.id != session[:user_id] && @currentUser.role != 'admin' && @currentUser.role != 'moderator'
+    if @user.id != session[:user_id] && current_user.role != 'admin' && current_user.role != 'moderator'
       redirect_to '/users'
     end
   end
 
   # same protections as edit to have double protection
   def update
-    @currentUser = current_user
     @user = User.find(params[:id])
-    if @user.id == session[:user_id] || @currentUser.role == 'admin' || @currentUser.role == 'moderator'
+    if @user.id == session[:user_id] || current_user.role == 'admin' || current_user.role == 'moderator'
       if @user.update(user_params)
         redirect_to '/users'
       else
