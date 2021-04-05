@@ -38,7 +38,7 @@
       <% @user.errors.full_messages_for(:email).each do |message| %>
         <div><%= message %></div>
       <% end %>
-      <% if @badEmail %>
+      <% if @bad_email %>
         <p>Error: Email is not on whitelist.</p>
       <% end %>
     </div>
