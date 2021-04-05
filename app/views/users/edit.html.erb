@@ -46,46 +46,137 @@
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="page-title"><h1>
 
+<% if @currentUser.role == 'admin' %>
+  <h1>Update <%=@user.full_name%>'s Account (Admin Privilages)</h1>
+<% else %>
+  <% if @currentUser.role == 'moderator' %>
+    <h1>Update <%=@user.full_name%>'s Account (Moderator Privilages)</h1>
+  <% else %>
+    <h1>Update Your Account</h1>
+  <% end %>
+<% end %>
+
 <!-- Page to update user account info -->
 <div>
-  <h2>Update Account</h2>
-
   <%= form_with model: @user do |f| %>
+    
+    <!-- If user is a moderator, do not allow them to edit Full Name field -->
+    <% if (@currentUser.id == @user.id || @currentUser.role == 'admin') %>
+      <div>
+        <%= f.label 'Full Name' %><br>
+        <%= f.text_field(:full_name) %>
+        <% @user.errors.full_messages_for(:full_name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
 
-    <table>
-      <tr>
-        <th>Full name<th>
-        <td><%= f.text_field(:full_name) %></td>
-      </tr>
-      <tr>
-        <th>Role</th>
-        <td><%= f.text_field(:role) %></td>
-      </tr>
-      <tr>
-        <th>Email</th>
-        <td><%= f.text_field(:email) %></td>
-      </tr>
-      <tr>
-        <th>Discord username</th>
-        <td><%= f.text_field(:discord_username) %></td>
-      </tr>
-      <tr>
-        <th>Phone</th>
-        <td><%= f.text_field(:phone) %></td>
-      </tr>
-      <tr>
-        <th>Username</th>
-        <td><%= f.text_field(:username) %></td>
-      </tr>
-      <tr>
-        <th>Password</th>
-        <td><%= f.text_field(:password) %></td>
-      </tr>
-    </table>
+    <% if @currentUser.role == 'admin' %>
 
-    <div class="form-buttons">
-      <%= f.submit("Update Account") %>
-    </div>
+      <!-- If current user is admin, allow to select any role unless last admin -->
+      <% if (User.where(role: 'admin').count == 1 && @user.role == 'admin') %>
+        <div><p></p></div>
+        <div>
+          <p>
+          You can not edit role because you are the last admin.<br>
+          Must be at least one admin at all times.
+          </p>
+        </div>
+        <div><p></p></div>
+      <% else %>
+        <div>
+          <%= f.label 'Role' %><br>
+          <%= f.select(:role, Role.all.collect {|c| [ c.role_name, c.role_name ] }, { include_blank: false }) %>
+          <% @user.errors.full_messages_for(:role).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+    <% else %>
+      <% if @currentUser.role == 'moderator' %>
+
+        <!-- If current user is moderator, allow them to select any role but not admin -->
+        <!-- Do not let a moderator edit an admins role -->
+        <% if @user.role != 'admin' %>
+          <div>
+          <%= f.label 'Role' %><br>
+            <%= f.select(:role, Role.all.reject {|role| role.role_name == 'admin'}.map(&:role_name), { include_blank: false }) %>
+            <% @user.errors.full_messages_for(:role).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
+        <% end %>
+
+      <% else %>
+
+        <!-- If current user is member, do not allow selection of admin or moderator -->
+        <div>
+        <%= f.label 'Role' %><br>
+          <%= f.select(:role, Role.all.reject {|role| (role.role_name == 'admin' || role.role_name == 'moderator')}.map(&:role_name), { include_blank: false }) %>
+          <% @user.errors.full_messages_for(:role).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+
+      <% end %>
+    <% end %>
+
+    <!-- If user is a moderator, do not allow them to edit below fields -->
+    <% if (@currentUser.id == @user.id || @currentUser.role == 'admin') %>
+      <div>
+        <%= f.label 'Email' %><br>
+        <%= f.text_field(:email) %>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+        <% if @badEmail %>
+          <p>Error: Email is not on whitelist.</p>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label 'Discord Username' %><br>
+        <%= f.text_field(:discord_username) %>
+        <% @user.errors.full_messages_for(:discord_username).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label 'Phone' %><br>
+        <%= f.text_field(:phone) %>
+        <% @user.errors.full_messages_for(:phone).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label 'Username' %><br>
+        <%= f.text_field(:username) %>
+        <% @user.errors.full_messages_for(:username).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- Only show password to the password owner (not even admin can see others passwords) -->
+    <% if @currentUser.id == @user.id %>
+      <div>
+        <%= f.label 'Password' %><br>
+        <%= f.text_field(:password, class: "formfield") %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if ((@currentUser.id == @user.id || @currentUser.role == 'admin') || (@user.role != 'admin' && @currentUser.role == 'moderator')) %>
+      <div class="form-buttons">
+        <%= f.submit("Update Account") %>
+      </div>
+    <% end %>
 
   <% end %>
+
 </div>
