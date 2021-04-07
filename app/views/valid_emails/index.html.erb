@@ -35,6 +35,13 @@
           <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -64,10 +71,12 @@
       <% group.compact.each do |email| %>
 
         <div class="card">
+        <a href="valid_emails/<%= email.id %>">
           <div class="container">
               <h4><%= email.email %></h4>
               <p>In Use: <%= email.in_use%></p>
           </div>
+        </a>
         </div>
 
       <% end %>

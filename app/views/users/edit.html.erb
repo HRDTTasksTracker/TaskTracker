@@ -33,6 +33,13 @@
           <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -177,6 +184,18 @@
       </div>
     <% end %>
 
+  <% end %>
+
+  <% if current_user.role == 'admin'%>
+    <% if (User.where(role: 'admin').count > 1 || @user.role != 'admin') %>
+      <div>
+        <button>
+          <%= link_to "Delete", user_path(@user),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete this user? \nThis action can not be undone." } %>
+        </button>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
