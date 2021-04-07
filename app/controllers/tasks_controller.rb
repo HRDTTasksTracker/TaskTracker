@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   def index
     # Returns all tasks in order by id
@@ -42,7 +44,8 @@ class TasksController < ApplicationController
   end
 
   private
-    def task_params
-      params.require(:task).permit(:task_name, :claimed_by, :child_task_id, :due_date, :task_description, :tag)
-    end
+
+  def task_params
+    params.require(:task).permit(:task_name, :claimed_by, :child_task_id, :due_date, :task_description, :tag)
+  end
 end

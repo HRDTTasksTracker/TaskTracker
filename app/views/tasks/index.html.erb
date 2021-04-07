@@ -13,7 +13,7 @@
       </tc>
       <tc>
           <td>
-            <a class="header" href="index.html" >Home</a>
+            <a class="header" href="/index.html" >Home</a>
           </td>
       </tc>
 
@@ -30,9 +30,16 @@
       </tc>
       <tc>
         <td>
-          <a class="header" href="index.html">Help</a>
+          <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -67,16 +74,18 @@
     <div class="card-group">
       <% group.compact.each do |task| %>
 
-        <div class="card">
-          
-          <div class="container">
-            <h4><b> <%=task.task_name%> </b></h4>
-            <p>Task ID: <%=task.id%></p>
-            <p>Due Date: <%=task.due_date%></p>
-            <p>Description: <%=task.task_description%></p>
-            <p>Tag: <%=task.tag%></p>
+        
+          <div class="card">
+          <a href="tasks/<%= task.id %>">
+            <div class="container">
+              <h4><b> <%=task.task_name%> </b></h4>
+              <p>Task ID: <%=task.id%></p>
+              <p>Due Date: <%=task.due_date%></p>
+              <p>Description: <%=task.task_description%></p>
+              <p>Tag: <%=task.tag%></p>
+            </div>
+            </a>
           </div>
-        </div>
 
       <% end %>
     </div>

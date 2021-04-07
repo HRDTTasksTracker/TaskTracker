@@ -1,6 +1,4 @@
 
-
-
 <!-- This page will list out attributes of a particualar task -->
 
 <!-- Navigation bar -->
@@ -19,7 +17,7 @@
       </tc>
       <tc>
           <td>
-            <a class="header" href="index.html" >Home</a>
+            <a class="header" href="/index.html" >Home</a>
           </td>
       </tc>
 
@@ -36,9 +34,16 @@
       </tc>
       <tc>
         <td>
-          <a class="header" href="index.html">Help</a>
+          <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -121,13 +126,16 @@
 
   <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
     <div>
-      <a href="/tasks/<%= @task.id %>/edit"> Edit 
+      <button> <%= link_to "Edit", task_path(@task) + "/edit" %> </button>
+    </div>
+
     <div>
-    <div>
-      <%= link_to "Delete", task_path(@task),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-    <div>
+      <button>
+        <%= link_to "Delete", task_path(@task),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      </button>
+    </div>
   <% end %>
     
   

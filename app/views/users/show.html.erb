@@ -17,7 +17,7 @@
       </tc>
       <tc>
           <td>
-            <a class="header" href="index.html" >Home</a>
+            <a class="header" href="/index.html" >Home</a>
           </td>
       </tc>
 
@@ -34,9 +34,16 @@
       </tc>
       <tc>
         <td>
-          <a class="header" href="index.html">Help</a>
+          <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -59,6 +66,10 @@
 
   <div>
     Role: <%= @user.role %>
+  </div>
+
+  <div>
+    <button> <%= link_to "Edit", user_path(@user) + "/edit" %> </button>
   </div>
 
 </div>

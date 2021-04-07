@@ -15,7 +15,7 @@
       </tc>
       <tc>
           <td>
-            <a class="header" href="index.html" >Home</a>
+            <a class="header" href="/index.html" >Home</a>
           </td>
       </tc>
 
@@ -32,9 +32,16 @@
       </tc>
       <tc>
         <td>
-          <a class="header" href="index.html">Help</a>
+          <a class="header" href="/index.html">Help</a>
         </td>
       </tc>
+      <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+        <tc>
+          <td>
+            <a class="header" href="/valid_emails">Whitelist Email</a>
+          </td>
+        </tc>
+      <% end %>
       <tc>
         <td>
           <a class="header" href="/logout">Sign Out</a>
@@ -49,18 +56,15 @@
 <h1 class="page-title"><h1>
 
 <div>
-  <h2>Whitelist Email</h2>
+  <h1>Add Whitelist Email</h1>
 
   <%= form_with model: @valid_email do |f| %>
-    <table>
-      <tr>
-        <th>Email</th>
-        <td><%= f.text_field(:email) %></td>
+    <div>
+        <%= f.text_field(:email) %>
         <% @valid_email.errors.full_messages_for(:email).each do |message| %>
           <div><%= message %></div>
         <% end %>
-      </tr>
-    </table>
+    </div>
 
     <div class="form-buttons">
       <%= f.submit("Whitelist Email") %>
