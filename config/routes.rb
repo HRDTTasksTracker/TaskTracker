@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'sessions#welcome'
 
   resources :tasks
-  resources :valid_emails, only: %i[new create index]
+  resources :valid_emails
   resources :users # , only: [:new, :create]
 
   # get 'whitelist/new' to: ''
