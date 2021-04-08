@@ -1,9 +1,0 @@
-<img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
-<h1>Welcome</h1>
-
-<% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
-<%end%>
-
-<%= button_to "Login", '/login', method: :get%>
-<%= button_to "Sign Up", '/users/new', method: :get%>
