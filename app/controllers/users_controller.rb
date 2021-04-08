@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  layout "header"  #the header for the pages
+
   skip_before_action :authorized, only: %i[new create]
 
   # shows all users
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    
     # find any role type in roles table
     @search = Role.first
     # if there are no roles, add the defaults. (member, moderator, admin)
@@ -32,9 +35,11 @@ class UsersController < ApplicationController
       @role = Role.new
       @role.role_name = 'admin'
       @role.save
+      
     end
 
     @user = User.new
+    render layout: "application"
   end
 
   # creates a new user after form is filled out
@@ -72,6 +77,7 @@ class UsersController < ApplicationController
       @bad_email = true
       render :new
     end
+    render layout: "application"
   end
 
   # user can edit users, but this guarentees the user can only

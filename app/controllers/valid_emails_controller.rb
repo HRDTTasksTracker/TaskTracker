@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ValidEmailsController < ApplicationController
+
+  layout "header"  #the header for the pages
+
   # will show all whitelisted emails
   def index
     # only allow admins and moderators to whitelist emails
