@@ -57,7 +57,7 @@
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="page-title"><h1>
 
-<h1>Account Detatils for User with ID: <%= @user.id %> </h1></h1>
+<h1>Account Details for <%= @user.full_name %>: </h1></h1>
 
 <div>
   <div>
@@ -69,7 +69,25 @@
   </div>
 
   <div>
-    <button> <%= link_to "Edit", user_path(@user) + "/edit" %> </button>
+    Email: <%= @user.email %>
   </div>
+
+  <div>
+    Phone: <%= @user.phone %>
+  </div>
+
+  <div>
+    Discord: <%= @user.discord_username %>
+  </div>
+
+  <div>
+    User ID: <%= @user.id %>
+  </div>
+
+  <% if current_user.role == 'admin' || current_user.role == 'moderator' || current_user.id == @user.id %>
+    <div>
+      <button> <%= link_to "Edit", user_path(@user) + "/edit" %> </button>
+    </div>
+  <% end %>
 
 </div>
