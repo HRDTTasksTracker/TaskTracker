@@ -19,7 +19,6 @@
 
   <div>
     Email: <%= @user.email %>
-<<<<<<< Updated upstream
   </div>
 
   <div>
@@ -34,22 +33,6 @@
     User ID: <%= @user.id %>
   </div>
 
-=======
-  </div>
-
-  <div>
-    Phone: <%= @user.phone %>
-  </div>
-
-  <div>
-    Discord: <%= @user.discord_username %>
-  </div>
-
-  <div>
-    User ID: <%= @user.id %>
-  </div>
-
->>>>>>> Stashed changes
   <% if current_user.role == 'admin' || current_user.role == 'moderator' || current_user.id == @user.id %>
     <div>
       <button> <%= link_to "Edit", user_path(@user) + "/edit" %> </button>
