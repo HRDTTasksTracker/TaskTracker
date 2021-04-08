@@ -159,19 +159,12 @@ body {
 </style>
 <header>
 
-<<<<<<< HEAD
-<%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
-<%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<%= stylesheet_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-=======
 
 <%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
 <%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
 <%= javascript_include_tag 'tasks.js', 'data-turbolinks-track' => true %>
 
 
->>>>>>> gui2
 
   <h2>
     <table>
@@ -259,88 +252,63 @@ body {
 
 
 <body id="container">
+  <% @tasks.in_groups_of(1) do |group| %>
+    <div class="card-group">
+      <% group.compact.each do |task| %>
+
+        <div class="node">
+          <div class="node-name">
+            <div class="name active"></div>
+              <div class="label"> 
+                <p>Task ID: <%=task.id%></p>
+              </div>
+
+                <div class="name active"> </div>
+          </div>
+          <div class="slot-active">
+          <div class="small inactive"> </div>
+      <div class="label"> 
+        <p>Description: <%=task.task_description%></p>
+
+
+      </div>
+        </div>
+        <div class="small inactive"> </div>
+      </div>
+    </div>
+
+</body>
+
+
+
+
+
+          <div class="container">
+            <h4><b> <%=task.task_name%> </b></h4>
+            <p>Task ID: <%=task.id%></p>
+            <p>Due Date: <%=task.due_date%></p>
+            <p>Description: <%=task.task_description%></p>
+            <p>Tag: <%=task.tag%></p>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</body>
+
+
+<body id="container">
 
   <button id="addButton">
 Add Button
 </button>
 
 
-
-  <!-- Node 1 -->
-  <div id="node_1" class="node" style="">
-    <div class="node-name" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div class="name inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 1</div>
-      <div id="slot-anchor-4" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 1</span></div>
-      
-    </div>
   
-      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-  </div>
-  <!-- Node 1 End -->
-  <!-- Node 2 -->
-  <div id="node_2" class="node" style=" transform: translate(259px, 231px);">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-2-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 2</div>
-      <div id="slot-anchor-2-out-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="removed" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 2</span></div>
-     
-    </div>
-  </div>
-  <!-- Node 2 End-->
-  <!-- Node 3 -->
-  <div id="node_3" class="node" style=" transform: translate(503px, 61px);">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-3-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 3</div>
-       <div id="slot-anchor-3-out-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      
-    </div>
-    
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-3" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"> </div>
-      
-        <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 3</span></div>
 
-    </div>
+  <!-- Node 1 End -->
  
-  </div>
-  <!-- Node 3 End -->
-  <!-- Node 4 -->
-  <div id="node_4" class="node" style=" transform: translate(794px, 17px);">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-5" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 4</div>
-      <div id="slot-anchor-5-out" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="node_4_slot1_in" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 4</span></div>
-     
-  </div>
-</div>
-  <!-- Node 4 End -->
- <div id="node_5_tim" class="node" style=" transform: translate(900px, 317px);">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="node_5_tim_in" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 5</div>
-      <div class="name inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 5</span>
-        <button id="database">Open</button></div>
-     
-  </div>
 
   <script type="text/javascript">
 
