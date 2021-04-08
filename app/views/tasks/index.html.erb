@@ -253,9 +253,9 @@ body {
 
 
 <body id="container">
-  <% @tasks.in_groups_of(1) do |group| %>
-    <div class="card-group">
-      <% group.compact.each do |task| %>
+  <% @tasks do |group| %>
+    
+      <% group do |task| %>
 
         <div class="node">
           <div class="node-name">
@@ -278,7 +278,7 @@ body {
         
       </div>
       <% end %>
-    </div>
+  
     <% end %>
 
 
@@ -291,6 +291,9 @@ Add Button
 
 
   <script type="text/javascript">
+
+
+
 
 
   </script>
