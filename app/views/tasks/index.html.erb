@@ -253,11 +253,9 @@ body {
 
 
 <body id="container">
-  <% @tasks do |group| %>
-    
-      <% group do |task| %>
+  <% @tasks.each do |tasks| %>
 
-        <div class="node">
+        <div class="node" id=<%=task.id%>>
           <div class="node-name">
             <div class="name active"></div>
               <div class="label"> 
@@ -279,7 +277,6 @@ body {
       </div>
       <% end %>
   
-    <% end %>
 
 
 
