@@ -264,7 +264,7 @@ body {
                 <div class="name active"> </div>
           </div>
           <div class="slot-active">
-            <%= if task.claimed_by == null %> 
+          <% if task.claimed_by.nil? %> 
           <div class="small"> </div>
           <% else %> 
           <div class="small active"> </div>
