@@ -255,7 +255,7 @@ body {
 <body id="container">
   <% @tasks.each do |task| %>
 
-        <div class="node" id=<%=task.id%>>
+        <div class="node" id=<%=task.id%> style=" transform: translate((100*<%=task.id%>)px, 50px);">
           <div class="node-name">
             <div class="name active"></div>
               <div class="label"> 
@@ -267,7 +267,9 @@ body {
           <div class="slot-active">
           <div class="small inactive"> </div>
       <div class="label"> 
-        <p>Description: <%=task.task_description%></p>
+        <p>Description: <%=task.task_name%></p>
+
+        <button onclick="myFunction(<%=task.id%>)">Open</button>
 
 
       </div>
@@ -277,67 +279,12 @@ body {
       </div>
       <% end %>
 
-
-        <div id="node_3" class="node">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-3-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 3</div>
-       <div id="slot-anchor-3-out-tim" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      
-    </div>
-    
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-3" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"> </div>
-      
-        <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 3</span></div>
-
-    </div>
- 
-
-
-  <div id="node_4" class="node">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="slot-anchor-5" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 4</div>
-      <div id="slot-anchor-5-out" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="node_4_slot1_in" class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 4</span></div>
-     
-  </div>
-
-
- <div id="node_5_tim" class="node">
-    <div class="node-name slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div id="node_5_tim_in" class="name active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">NODE 5</div>
-      <div class="name inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-    </div>
-    <div class="slot slot-active" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;">
-      <div class="small inactive" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"></div>
-      <div class="label" style="will-change: transform; -webkit-tap-highlight-color: transparent; cursor: grab; user-select: none;"><span class="label-text">Task 5</span>
-        <button>Open</button></div>
-     
-  
-
-
-
-
-  <button id="addButton">
-Add Button
-</button>
-
-
+</body>
 
   <script type="text/javascript">
 
-
-
-
+    function myFunction(elem){
+  document.location.href = "https://powerful-waters-96115.herokuapp.com/tasks/"+elem;
+}
 
   </script>
-
-  
-</body>
-
