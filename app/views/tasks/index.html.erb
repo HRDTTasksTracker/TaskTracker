@@ -9,7 +9,6 @@ body {
 }
 .node {
   height: auto;
-  position: absolute;
   min-width: 100px;
   max-width: 250px;
   background: #d8d8d8;
@@ -118,8 +117,8 @@ body {
   border-style: solid;
 }
 .name {
-  width: 22px;
-  height: 22px;
+  width: 40px;
+  height: 40px;
   border-width: 3px;
   border-color: #d8d8d8;
   border-style: solid;
@@ -255,7 +254,7 @@ body {
 <body id="container">
   <% @tasks.each do |task| %>
 
-        <div class="node" id=<%=task.id%> style=" transform: translate((100*<%=task.id%>)px, 50px);">
+        <div class="node" id=<%=task.id%>>
           <div class="node-name">
             <div class="name active"></div>
               <div class="label"> 
@@ -265,16 +264,22 @@ body {
                 <div class="name active"> </div>
           </div>
           <div class="slot-active">
-          <div class="small inactive"> </div>
+            <%= if task.claimed_by == null %> 
+          <div class="small"> </div>
+          <% else %> 
+          <div class="small active"> </div>
+          <% end %>
+
       <div class="label"> 
-        <p>Description: <%=task.task_name%></p>
+        <p>Task: <%=task.task_name%></p>
+
+         <%= link_to "#{task.id}, class: "btn btn-primary" %>
 
         <button onclick="myFunction(<%=task.id%>)">Open</button>
 
 
       </div>
         </div>
-        <div class="small inactive"> </div>
         
       </div>
       <% end %>
