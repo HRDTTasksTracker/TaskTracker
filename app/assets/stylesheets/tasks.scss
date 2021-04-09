@@ -24,9 +24,21 @@ a:hover {
     margin-right: 5%;
 }
 
+.filter-field {
+    margin-bottom: .3in;
+    margin-right: 5%;
+    width: 100%;
+    text-align: right;
+}
+
 .task-page-title {
+    display: flex;
     margin-top: 120px;
+}
+
+.task-page-title-styling {
     margin-left: 5%;
+    margin-right: 50%;
     text-align: left;
 }
 
