@@ -96,10 +96,10 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         redirect_to '/users'
       else
-        render :new
+        render :edit
       end
     else
-      render :new
+      render :edit
     end
   end
 
