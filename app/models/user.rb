@@ -6,7 +6,13 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :full_name, presence: true
-  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  validates :full_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  validates :password, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  validates :phone, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  validates :discord_username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+  
   before_validation :strip_whitespace
 
   private
