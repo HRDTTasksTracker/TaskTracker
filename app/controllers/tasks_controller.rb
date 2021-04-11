@@ -77,4 +77,19 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:task_name, :claimed_by, :child_task_id, :due_date, :task_description, :tag)
   end
+  class Graph
+    def initialize
+      @vertices = {}
+    end
+      
+    def add_node(vertex)
+      @vertices[vertex] = vertex
+    end
+      
+    def add_edge(node1, node2)
+      @vertices[node1].update(adjacent_nodes: node2.id)
+      @vertices[node2].add_edge(@nodes[node1])
+    end
+      
+  end
 end
