@@ -76,26 +76,13 @@ window.addEventListener("load", function() {
       }
 
 
-
-
-
-
-
-
-
-      
-
      
       console.log(lines);
       
-    
-  
+
 function myFunction(elem){
   document.location.href = "https://powerful-waters-96115.herokuapp.com/tasks/"+elem;
 }
-
-
-
 
   
 });
