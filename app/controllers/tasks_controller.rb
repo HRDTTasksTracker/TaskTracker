@@ -40,6 +40,9 @@ class TasksController < ApplicationController
     end
     @task = Task.new(task_params)
     if @task.save
+      @node = Node.new(node_params)
+      @node.update(adjacent_nodes: [@task.child_task_id])
+      @node.save
       redirect_to @task
     else
       render :new
