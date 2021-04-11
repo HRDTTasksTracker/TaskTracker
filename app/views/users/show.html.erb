@@ -1,56 +1,12 @@
 <!-- This page will list out the id and full name
      of a particualar user -->
 
-<!-- Navigation bar -->
-<header>
-  <h2>
-    <table>
-      <tc>
-        <td> 
-          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
-        </td>
-      </tc>
-      <tc>
-        <td>
-                  
-        </td>
-      </tc>
-      <tc>
-          <td>
-            <a class="header" href="index.html" >Home</a>
-          </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/tasks">TaskTracker</a>
-        </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/users">Contacts</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="index.html">Help</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="/logout">Sign Out</a>
-        </td>
-      </tc>
-    </table>
-  </h2>
-</header>
 
 <!-- The page title empty header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="page-title"><h1>
 
-<h1>Account Detatils for User with ID: <%= @user.id %> </h1></h1>
+<h1>Account Details for <%= @user.full_name %>: </h1></h1>
 
 <div>
   <div>
@@ -60,5 +16,27 @@
   <div>
     Role: <%= @user.role %>
   </div>
+
+  <div>
+    Email: <%= @user.email %>
+  </div>
+
+  <div>
+    Phone: <%= @user.phone %>
+  </div>
+
+  <div>
+    Discord: <%= @user.discord_username %>
+  </div>
+
+  <div>
+    User ID: <%= @user.id %>
+  </div>
+
+  <% if current_user.role == 'admin' || current_user.role == 'moderator' || current_user.id == @user.id %>
+    <div>
+      <button> <%= link_to "Edit", user_path(@user) + "/edit" %> </button>
+    </div>
+  <% end %>
 
 </div>

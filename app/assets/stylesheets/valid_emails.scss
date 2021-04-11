@@ -55,3 +55,15 @@
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     /*cursor: pointer; /* Add a pointer on hover */
 }
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
