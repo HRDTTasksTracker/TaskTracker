@@ -1,8 +1,9 @@
 class RolesController < ApplicationController
+    layout "header"  #the header for the pages
     def index
-        # Returns all tasks in order by id
+        # Returns all roles in order by id
         @role = Role.order(id: :asc)
-    end
+      end
     def new
         @role = Role.new
     end
