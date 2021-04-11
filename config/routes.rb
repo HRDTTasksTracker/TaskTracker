@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # get 'whitelist/new' to: ''
   get 'login', to: 'sessions#new'
+  get 'filtered', to: 'tasks#filtered'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
   get 'logout', to: 'sessions#logout'

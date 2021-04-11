@@ -23,6 +23,25 @@ class TasksController < ApplicationController
 
   end
 
+  def filtered
+    # this is the task that have been filterd by the users input
+    @tasks = Task.where(tag: params[:tagsearch])
+
+    # if noting was entered, then just reload the /tasks page
+    if params[:tagsearch] == ""
+      redirect_to '/tasks'
+      return
+    end
+
+    # if nothing returned on a search, then display error message and redirect to /tasks
+    if Task.where(tag: params[:tagsearch]).count == 0
+      render(
+        html: "<script>alert('Nothing Found');
+          window.location.replace(\"/tasks\")</script>".html_safe,
+      )
+    end
+  end
+
   def show
     @task = Task.find(params[:id])
   end
