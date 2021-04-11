@@ -226,7 +226,7 @@ body {
 </div>
 
 <!-- This will list all the task id and task names -->
-<body>
+<body id="container">
   <div>
   <% @tasks.in_groups_of(1) do |group| %>
     <div class="card-group">
@@ -246,11 +246,10 @@ body {
       <% end %>
     </div>
   <% end %>
-</body>
 
 
 
-<body id="container">
+
 
   <% @tasks.each do |task| %>
         <div class="node" id=<%=task.id%>>
