@@ -25,6 +25,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Gems for RSpec testing and Brackmam. Read more from links below:
+#   https://semaphoreci.com/community/tutorials/getting-started-with-rspec
+#   https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/
+#   https://www.sitepoint.com/basics-capybara-improving-tests/
+#   https://learn.co/lessons/intro-to-capybara
+gem 'rspec-rails'
+gem 'rexml'
+gem 'brakeman'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -44,6 +53,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.3'
 end
 
 group :test do
