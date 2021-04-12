@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  layout "header"  #the header for the pages
 
   skip_before_action :authorized, only: %i[new create]
 
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
+  def new 
     
     # find any role type in roles table
     @search = Role.first
@@ -39,7 +38,6 @@ class UsersController < ApplicationController
     end
 
     @user = User.new
-    render layout: "application"
   end
 
   # creates a new user after form is filled out
@@ -77,7 +75,6 @@ class UsersController < ApplicationController
       @bad_email = true
       render :new
     end
-    render layout: "application"
   end
 
   # user can edit users, but this guarentees the user can only
