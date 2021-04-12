@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
+  def new 
     
     # find any role type in roles table
     @search = Role.first
