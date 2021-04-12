@@ -99,6 +99,9 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:task_name, :claimed_by, :child_task_id, :due_date, :task_description, :tag)
   end
+  def node_params
+      params.require(:task).permit(:task_name)
+    end
   class Graph
     def initialize
       @vertices = {}
