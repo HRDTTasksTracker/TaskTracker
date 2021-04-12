@@ -312,11 +312,14 @@ window.addEventListener("load", function() {
 
       for (var x = 0; x < nodesList.length; x++) 
       {
+         nodesList[x].style.transform = "translate(" + (300*connection[x].length) + "px";  
+
+
          new PlainDraggable(nodesList[x], {
           onMove: function() {
             for (var y = 0; y < lines.length; y++) 
               {
-              lines[y].position();
+                  lines[y].position();
               }
           },
 
@@ -324,6 +327,11 @@ window.addEventListener("load", function() {
 
 
       }
+
+        for (var y = 0; y < lines.length; y++) 
+        {
+          lines[y].position();
+        }
 
 
      
