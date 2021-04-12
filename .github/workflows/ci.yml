@@ -52,6 +52,7 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Install dependencies
         run: |
+          bundle update rails
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
@@ -64,8 +65,8 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           PG_USER: postgres
         run: |
-          bin/rails db:test:prepare
-          bin/rails test
+          rails db:test:prepare
+          rails test
   Deploy:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: Test
