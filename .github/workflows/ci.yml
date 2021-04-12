@@ -52,8 +52,8 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Install dependencies
         run: |
-          gem install bundler:2.2.8 
-          bundle update marcel
+          gem install bundler:2.1.4
+          bundle update --conservative mimemagic
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           yarn install --frozen-lockfile
