@@ -6,21 +6,7 @@ class TasksController < ApplicationController
   
   def index
     # Returns all tasks in order by id
-
     @tasks = Task.order(id: :asc)   #Returns all nodes stored in the nodes table
-    @nodes = Node.order(id: :asc)
-    @graph = Graph.new          #new graph tree created
-    @nodes.each do |row|
-      @graph.add_node(row)      #adding the node to graph
-
-
-    end
-
-    #now graph object contains all the nodes( task name , child task id) within the object.  
-
-      
-
-
   end
 
   def filtered
