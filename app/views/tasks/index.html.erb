@@ -251,6 +251,7 @@ window.addEventListener("load", function() {
     var connection = [];
     var ids = [];
     var lines = [];
+    var parents = [];
     console.log(nodesList);
 
 
@@ -258,39 +259,51 @@ window.addEventListener("load", function() {
       //creating the array of tasks
        for (var i = 0; i < nodesList.length; i++) 
       {
+        //tracking the child parent relationship
         connection[i]=[];
+        //tracking the number of parent
+        parents[i]=0;
+        //tracking the id order
         ids.push(nodesList[i].id)
+        
 
       }
 
 
-
+/*
       //assigning each task their child and parent
       for (var i = 0; i < nodesList.length; i++) 
       {
         var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        console.log(tmp +"TEST");
         if(tmp)
         {
             var index = ids.indexOf(tmp);
-            connection[index].push(i);
+            //connection[index].push(i);
             connection[i].push(index);
         }
       }
-
+*/
 
 
       //creating the lines
-      for (var x = 0; x < connection.length; x++) 
+      for (var x = 0; x < nodesList.length; x++) 
       {
-        console.log()
-        for (var y = 0; y < connection[x].length; y++) 
-        {
-            console.log(document.getElementsByClassName("name active")[x*2])
-            console.log(document.getElementsByClassName("name active")[x*connection[x][y]+1])
+        console.log(document.getElementsByClassName("name active"));
+    
+          var tmp = nodesList[x].getElementsByClassName('node-name')[0].id
+          var index = ids.indexOf(tmp);
 
 
+            console.log(document.getElementsByClassName("name active")[x*2+1])
+            console.log(document.getElementsByClassName("name active")[index*2])
 
-          var tmpLine = new LeaderLine(document.getElementsByClassName("name active")[x*2], document.getElementsByClassName("name active")[x*connection[x][y]+1], {
+            parents[index]=parents[index]+1;
+
+
+            if(document.getElementsByClassName("name active")[x*2+1]&&document.getElementsByClassName("name active")[index*2])
+            {
+          var tmpLine = new LeaderLine(document.getElementsByClassName("name active")[x*2+1], document.getElementsByClassName("name active")[index*2], {
             startPlug: "behind",
             endPlug: "behind",
             size: 4,
@@ -303,16 +316,18 @@ window.addEventListener("load", function() {
           });
           console.log(1);
           lines.push(tmpLine);
+
+          }
         }
 
-      }
+      
 
       console.log(lines);
 
 
       for (var x = 0; x < nodesList.length; x++) 
       {
-         nodesList[x].style.transform = "translate(" + (300*connection[x].length) + "px";  
+         nodesList[x].style.transform = "translate(" + (300*parents[x]) + "px";  
 
 
          new PlainDraggable(nodesList[x], {
