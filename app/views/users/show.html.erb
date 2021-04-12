@@ -19,13 +19,12 @@
     Role: <%= @user.role %>
   </div>
 
-
   <div>
     Email: <%= @user.email %>
   </div>
 
   <div>
-    Phone: <%= @user.phone %>
+    Phone: <%= @user.phone[0] + @user.phone[1] + @user.phone[2] + "-" + @user.phone[3] + @user.phone[4] + @user.phone[5] + "-" + @user.phone[6] + @user.phone[7] + @user.phone[8] + @user.phone[9] %>
   </div>
 
   <div>
