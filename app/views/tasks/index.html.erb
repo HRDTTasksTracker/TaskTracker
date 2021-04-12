@@ -9,7 +9,6 @@ body {
 }
 .node {
   height: auto;
-  position: absolute;
   min-width: 100px;
   max-width: 250px;
   background: #d8d8d8;
@@ -118,8 +117,8 @@ body {
   border-style: solid;
 }
 .name {
-  width: 22px;
-  height: 22px;
+  width: 40px;
+  height: 40px;
   border-width: 3px;
   border-color: #d8d8d8;
   border-style: solid;
@@ -162,7 +161,6 @@ body {
 
 <%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
 <%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
-<%= javascript_include_tag 'tasks.js', 'data-turbolinks-track' => true %>
 
 
 </header>
@@ -190,8 +188,7 @@ body {
 <% end %>
 
 <!-- This will list all the task id and task names -->
-<body>
-  <div>
+<body id="container">
   <% @tasks.in_groups_of(1) do |group| %>
     <div class="card-group">
       <% group.compact.each do |task| %>
@@ -211,16 +208,14 @@ body {
       <% end %>
     </div>
   <% end %>
-</body>
 
 
-<body id="container">
-  <% @tasks.in_groups_of(1) do |group| %>
-    <div class="card-group">
-      <% group.compact.each do |task| %>
 
-        <div class="node">
-          <div class="node-name">
+
+
+  <% @tasks.each do |task| %>
+        <div class="node" id=<%=task.id%>>
+          <div class="node-name" id=<%=task.child_task_id%>>
             <div class="name active"></div>
               <div class="label"> 
                 <p>Task ID: <%=task.id%></p>
@@ -229,53 +224,118 @@ body {
                 <div class="name active"> </div>
           </div>
           <div class="slot-active">
-          <div class="small inactive"> </div>
+          <% if task.claimed_by.nil? %> 
+          <div class="small"> </div>
+          <% else %> 
+          <div class="small active"> </div>
+          <% end %>
+
       <div class="label"> 
-        <p>Description: <%=task.task_description%></p>
+        <p>Task: <%=task.task_name%></p>
+
+        <button onclick="myFunction(<%=task.id%>)">Open</button>
 
 
       </div>
         </div>
-        <div class="small inactive"> </div>
+        
       </div>
-    </div>
-
-</body>
-
-
-
-
-
-          <div class="container">
-            <h4><b> <%=task.task_name%> </b></h4>
-            <p>Task ID: <%=task.id%></p>
-            <p>Due Date: <%=task.due_date%></p>
-            <p>Description: <%=task.task_description%></p>
-            <p>Tag: <%=task.tag%></p>
-          </div>
-        </div>
-
       <% end %>
-    </div>
-  <% end %>
+
+
 </body>
 
+<script type="text/javascript">
 
-<body id="container">
-
-  <button id="addButton">
-Add Button
-</button>
+window.addEventListener("load", function() {
+  "use strict";
 
 
-  
- 
 
-  <script type="text/javascript">
+    
+    var nodesList = document.getElementsByClassName("node");
+    var connection = [];
+    var lines = [];
+    console.log(nodesList);
 
 
-  </script>
 
-  
-</body>
+      //creating the array of tasks
+       for (var i = 0; i < nodesList.length; i++) 
+      {
+        connection[i]=[];
 
+      }
+
+
+
+      //assigning each task their child and parent
+      for (var i = 0; i < nodesList.length; i++) 
+      {
+        var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        if(tmp)
+        {
+            connection[tmp-1].push(i);
+            connection[i].push(tmp-1);
+        }
+      }
+
+
+      //creating the lines
+      for (var x = 0; x < connection.length; x++) 
+      {
+        console.log()
+        for (var y = 0; y < connection[x].length; y++) 
+        {
+            console.log(document.getElementsByClassName("name active")[x*2])
+            console.log(document.getElementsByClassName("name active")[x*connection[x][y]+1])
+
+
+
+          var tmpLine = new LeaderLine(document.getElementsByClassName("name active")[x*2], document.getElementsByClassName("name active")[x*connection[x][y]+1], {
+            startPlug: "behind",
+            endPlug: "behind",
+            size: 4,
+            startPlugSize: 1,
+            endPlugSize: 1,
+            startSocket: "left",
+            endSocket: "right",    
+            color: "#30c117"
+
+          });
+          console.log(1);
+          lines.push(tmpLine);
+        }
+
+      }
+
+
+      for (var x = 0; x < nodesList.length; x++) 
+      {
+         new PlainDraggable(nodesList[x], {
+          onMove: function() {
+            for (var y = 0; y < lines.length; y++) 
+              {
+              lines[y].position();
+              }
+          },
+
+        });
+
+
+      }
+
+
+     
+      console.log(lines);
+      
+});
+
+
+    function myFunction(elem){
+  document.location.href = location.href+"/"+elem;
+}
+
+
+
+</script>
