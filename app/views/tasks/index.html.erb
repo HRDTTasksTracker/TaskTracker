@@ -314,7 +314,7 @@ window.addEventListener("load", function() {
       for (var x = 0; x < nodesList.length; x++) 
       {
 
-        var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        var tmp = nodesList[x].getElementsByClassName('node-name')[0].id
         
         //translate over by # of parents or if no child, it goes to the end
         if(tmp)
@@ -323,7 +323,7 @@ window.addEventListener("load", function() {
          }
          else
          {
-          nodesList[x].style.transform = "translate(" + (1300) + "px"; 
+          nodesList[x].style.transform = "translate(" + 1300 + "px"; 
          } 
 
 
