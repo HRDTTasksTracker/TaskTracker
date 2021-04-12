@@ -1,5 +1,165 @@
-<%=render "header.html.erb"%>
+<style type="text/css">
+  
+body {
+  min-height: 1600px;
+  min-width: 1600px;
+}
+.leader-line {
+  z-index: -1;
+}
+.node {
+  height: auto;
+  min-width: 100px;
+  max-width: 250px;
+  background: #d8d8d8;
+  margin: 10px;
+}
+.label {
+  flex: 100px;
+  min-width: 100px;
+  max-width: 250px;
+}
+.node-name .label {
+  flex: 100px;
+  min-width: 100px;
+  max-width: 250px;
+  padding: 0 5px;
+  border: 3px #5b5b5b solid;
+}
 
+.label-text {
+  padding: 0 5px;
+}
+.slot-button {
+  padding: 4px 4px 4px 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 4px #8e8e8e solid;
+  color: #5b5b5b;
+}
+.slot-config {
+  padding: 4px 4px 4px 6px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px #8e8e8e solid;
+  color: #5b5b5b;
+  border-radius: 30px;
+}
+.field-active,
+.field-inactive {
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: #fff;
+  color: #5b5b5b;
+  text-transform: none;
+  font-style: italic;
+}
+.field-inactive {
+  border: 3px #5b5b5b solid;
+  background: #ccc;
+  color: #5b5b5b;
+  text-transform: none;
+  font-style: italic;
+}
+.slot-active,
+.slot-inactive {
+  padding: 4px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: 3px #5b5b5b solid;
+  background: #fff;
+  color: #5b5b5b;
+}
+.slot-inactive {
+  background: #8e8e8e;
+  border: 3px #8e8e8e solid;
+  color: #fff;
+}
+.slot:last-child {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.elevation-3 {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.small {
+  width: 8px;
+  height: 8px;
+  border-width: 4px;
+  border-color: #d8d8d8;
+  border-style: solid;
+}
+.name {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+  border-color: #d8d8d8;
+  border-style: solid;
+}
+.active {
+  background: #30c117;
+  border-color: #30c117;
+  border-style: solid;
+}
+
+
+.node-name {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0px 0px;
+  text-transform: uppercase;
+  color: #dddddd;
+  background: #5b5b5b;
+  margin: 0;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.node-name.slot-active {
+  border-style: none;
+}
+
+.node-name.slot-active .slot-anchor-node-name.slot-anchor-active {
+  background: #30c117;
+  border-color: #30c117;
+  border-style: solid;
+}
+
+
+
+</style>
+
+<%=render "header.html.erb"%>
+<%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/leader-line@1.0.5/leader-line.min.js' %>
+<%= javascript_include_tag   'https://cdn.jsdelivr.net/npm/plain-draggable@2.5.12/plain-draggable.min.js' %>
 <!-- The page title header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="task-page-title">
@@ -45,4 +205,135 @@
       <% end %>
     </div>
   <% end %>
+
+
+
+   <% @tasks.each do |task| %>
+        <div class="node" id=<%=task.id%>>
+          <div class="node-name" id=<%=task.child_task_id%>>
+            <div class="name active"></div>
+              <div class="label"> 
+                <p>Task ID: <%=task.id%></p>
+              </div>
+
+                <div class="name active"> </div>
+          </div>
+          <div class="slot-active">
+          <% if task.claimed_by.nil? %> 
+          <div class="small"> </div>
+          <% else %> 
+          <div class="small active"> </div>
+          <% end %>
+
+      <div class="label"> 
+        <p>Task: <%=task.task_name%></p>
+
+        <button onclick="myFunction(<%=task.id%>)">Open</button>
+
+
+      </div>
+        </div>
+        
+      </div>
+      <% end %>
 </body>
+
+
+<script type="text/javascript">
+
+window.addEventListener("load", function() {
+  "use strict";
+
+
+
+    
+    var nodesList = document.getElementsByClassName("node");
+    var connection = [];
+    var lines = [];
+    console.log(nodesList);
+
+
+
+      //creating the array of tasks
+       for (var i = 0; i < nodesList.length; i++) 
+      {
+        connection[i]=[];
+
+      }
+
+
+
+      //assigning each task their child and parent
+      for (var i = 0; i < nodesList.length; i++) 
+      {
+        var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        if(tmp)
+        {
+            connection[tmp-1].push(i);
+            connection[i].push(tmp-1);
+        }
+      }
+
+
+
+      //creating the lines
+      for (var x = 0; x < connection.length; x++) 
+      {
+        console.log()
+        for (var y = 0; y < connection[x].length; y++) 
+        {
+            console.log(document.getElementsByClassName("name active")[x*2])
+            console.log(document.getElementsByClassName("name active")[x*connection[x][y]+1])
+
+
+
+          var tmpLine = new LeaderLine(document.getElementsByClassName("name active")[x*2], document.getElementsByClassName("name active")[x*connection[x][y]+1], {
+            startPlug: "behind",
+            endPlug: "behind",
+            size: 4,
+            startPlugSize: 1,
+            endPlugSize: 1,
+            startSocket: "left",
+            endSocket: "right",    
+            color: "#30c117"
+
+          });
+          console.log(1);
+          lines.push(tmpLine);
+        }
+
+      }
+
+      console.log(lines);
+
+
+      for (var x = 0; x < nodesList.length; x++) 
+      {
+         new PlainDraggable(nodesList[x], {
+          onMove: function() {
+            for (var y = 0; y < lines.length; y++) 
+              {
+              lines[y].position();
+              }
+          },
+
+        });
+
+
+      }
+
+
+     
+      console.log(lines);
+      
+});
+
+
+    function myFunction(elem){
+  document.location.href = location.href+"/"+elem;
+}
+
+
+
+</script>
+
