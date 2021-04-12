@@ -52,8 +52,8 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Install dependencies
         run: |
-          gem install bundler:2.1.4
-          bundle update --conservative mimemagic
+          gem install bundler
+          gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           yarn install --frozen-lockfile
