@@ -1,53 +1,7 @@
 
-
-
 <!-- This page will list out attributes of a particualar task -->
 
 <!-- Navigation bar -->
-<header>
-  <h2>
-    <table>
-      <tc>
-        <td> 
-          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
-        </td>
-      </tc>
-      <tc>
-        <td>
-                  
-        </td>
-      </tc>
-      <tc>
-          <td>
-            <a class="header" href="index.html" >Home</a>
-          </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/tasks">TaskTracker</a>
-        </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/users">Contacts</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="index.html">Help</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="/logout">Sign Out</a>
-        </td>
-      </tc>
-    </table>
-  </h2>
-</header>
-
 <!-- The page title header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
 <h1 class="task-page-title"></h1>
@@ -66,7 +20,7 @@
   </div>
 
   <div>
-    Due Date: <%= @task.due_date %>
+    Due Date: <%= @task.due_date.strftime('%Y-%m-%d') %>       
   </div>
 
   <div>
@@ -121,13 +75,16 @@
 
   <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
     <div>
-      <a href="/tasks/<%= @task.id %>/edit"> Edit 
+      <button> <%= link_to "Edit", task_path(@task) + "/edit" %> </button>
+    </div>
+
     <div>
-    <div>
-      <%= link_to "Delete", task_path(@task),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-    <div>
+      <button>
+        <%= link_to "Delete", task_path(@task),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      </button>
+    </div>
   <% end %>
     
   

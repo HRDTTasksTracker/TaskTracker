@@ -7,14 +7,38 @@
     width: 100%;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
+
 .card-group {
     display: flex;
     margin-right: 5%;
 }
 
+.filter-field {
+    margin-bottom: .3in;
+    margin-right: 5%;
+    width: 100%;
+    text-align: right;
+}
+
 .task-page-title {
+    display: flex;
     margin-top: 120px;
+}
+
+.task-page-title-styling {
     margin-left: 5%;
+    margin-right: 50%;
     text-align: left;
 }
 

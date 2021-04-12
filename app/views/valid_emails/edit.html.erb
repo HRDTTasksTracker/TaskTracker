@@ -1,0 +1,22 @@
+
+
+<!-- The page title empty header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="page-title"><h1>
+
+<div>
+  <h1>Edit Whitelist Email</h1>
+
+  <%= form_with model: @valid_email do |f| %>
+    <div>
+        <%= f.text_field(:email) %>
+        <% @valid_email.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="form-buttons">
+      <%= f.submit("Update Email") %>
+    </div>
+  <% end %>
+</div>

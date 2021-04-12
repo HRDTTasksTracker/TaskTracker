@@ -165,67 +165,29 @@ body {
 <%= javascript_include_tag 'tasks.js', 'data-turbolinks-track' => true %>
 
 
-
-  <h2>
-    <table>
-      <tc>
-        <td> 
-          <img src="/assets/HRDT.png" alt="Logo" width="110px" height="50px" style="vertical-align:top;">
-        </td>
-      </tc>
-      <tc>
-        <td>
-                  
-        </td>
-      </tc>
-      <tc>
-          <td>
-            <a class="header" href="index.html" >Home</a>
-          </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/tasks">TaskTracker</a>
-        </td>
-      </tc>
-
-      <tc>
-        <td>
-          <a class="header" href="/users">Contacts</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="index.html">Help</a>
-        </td>
-      </tc>
-      <tc>
-        <td>
-          <a class="header" href="/logout">Sign Out</a>
-        </td>
-      </tc>
-    </table>
-  </h2>
 </header>
 
 <!-- The page title header adjust the -->
 <!-- content to compensate for the fixed navigation bar -->
-<h1 class="task-page-title">Tasks</h1>
+<h1 class="task-page-title">
+  <div class="task-page-title-styling">Tasks</div>
+  <div class="filter-field">
+      <form action="/filtered">
+        <input type="text" name="tagsearch" id="tagsearch" />
+        <input type="submit" value="Filter by Tag"/>
+      </form>
+    </div>
+  </h1>
 
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
+<% if current_user.role == 'admin' || current_user.role == 'moderator' %>
+  <div id="overlay">
+    <span title="Create New Task">
+      <a href="tasks/new">
+        <img class="create-button" src="/assets/create-button.png" alt="Create New Task Button" width="110px" height="110px">
+      </a>
+    </span>
   </div>
 <% end %>
-
-<div id="overlay">
-  <span title="Create New Task">
-    <a href="tasks/new">
-      <img class="create-button" src="/assets/create-button.png" alt="Create New Task Button" width="110px" height="110px">
-    </a>
-  </span>
-</div>
 
 <!-- This will list all the task id and task names -->
 <body>
@@ -234,16 +196,17 @@ body {
     <div class="card-group">
       <% group.compact.each do |task| %>
 
-        <div class="card">
-          
+
+          <div class="card">
+          <a href="tasks/<%= task.id %>">
           <div class="container">
             <h4><b> <%=task.task_name%> </b></h4>
             <p>Task ID: <%=task.id%></p>
-            <p>Due Date: <%=task.due_date%></p>
+            <p>Due Date: <%=task.due_date.strftime('%Y-%m-%d')%></p>
             <p>Description: <%=task.task_description%></p>
             <p>Tag: <%=task.tag%></p>
+
           </div>
-        </div>
 
       <% end %>
     </div>
@@ -306,8 +269,6 @@ Add Button
 
 
   
-
-  <!-- Node 1 End -->
  
 
   <script type="text/javascript">
