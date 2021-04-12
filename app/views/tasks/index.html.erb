@@ -207,7 +207,7 @@ body {
   <% end %>
 
 
-
+<!-- for each task, we create a node for the graph with the ID and child id embed into the html !--->
    <% @tasks.each do |task| %>
         <div class="node" id=<%=task.id%>>
           <div class="node-name" id=<%=task.child_task_id%>>
@@ -246,17 +246,17 @@ window.addEventListener("load", function() {
 
 
 
-    
+    //initiating variables
     var nodesList = document.getElementsByClassName("node");
     var connection = [];
     var ids = [];
     var lines = [];
     var parents = [];
-    console.log(nodesList);
+    //console.log(nodesList);
 
 
 
-      //creating the array of tasks
+      //creating the array
        for (var i = 0; i < nodesList.length; i++) 
       {
         //tracking the child parent relationship
@@ -269,40 +269,26 @@ window.addEventListener("load", function() {
 
       }
 
-
-/*
-      //assigning each task their child and parent
-      for (var i = 0; i < nodesList.length; i++) 
-      {
-        var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
-        console.log(tmp +"TEST");
-        if(tmp)
-        {
-            var index = ids.indexOf(tmp);
-            //connection[index].push(i);
-            connection[i].push(index);
-        }
-      }
-*/
-
-
       //creating the lines
       for (var x = 0; x < nodesList.length; x++) 
       {
         console.log(document.getElementsByClassName("name active"));
     
+          //pulling child id and finding which node it is. 
           var tmp = nodesList[x].getElementsByClassName('node-name')[0].id
           var index = ids.indexOf(tmp);
 
 
-            console.log(document.getElementsByClassName("name active")[x*2+1])
-            console.log(document.getElementsByClassName("name active")[index*2])
+          //console.log(document.getElementsByClassName("name active")[x*2+1])
+          //console.log(document.getElementsByClassName("name active")[index*2])
 
+            //keeping track of how many parents for drawing graph purposes
             parents[index]=parents[index]+1;
 
-
+            //making sure there is a parent/child but mostly to check for child
             if(document.getElementsByClassName("name active")[x*2+1]&&document.getElementsByClassName("name active")[index*2])
             {
+              //creating lines
           var tmpLine = new LeaderLine(document.getElementsByClassName("name active")[x*2+1], document.getElementsByClassName("name active")[index*2], {
             startPlug: "behind",
             endPlug: "behind",
@@ -314,7 +300,7 @@ window.addEventListener("load", function() {
             color: "#30c117"
 
           });
-          console.log(1);
+          //adding to line array
           lines.push(tmpLine);
 
           }
@@ -322,14 +308,26 @@ window.addEventListener("load", function() {
 
       
 
-      console.log(lines);
 
 
+      //transforming node on the graph
       for (var x = 0; x < nodesList.length; x++) 
       {
-         nodesList[x].style.transform = "translate(" + (300*parents[x]) + "px";  
+
+        var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        
+        //translate over by # of parents or if no child, it goes to the end
+        if(tmp)
+        {
+         nodesList[x].style.transform = "translate(" + (300*parents[x]) + "px"; 
+         }
+         else
+         {
+          nodesList[x].style.transform = "translate(" + (1300) + "px"; 
+         } 
 
 
+          //make all nodes dragables
          new PlainDraggable(nodesList[x], {
           onMove: function() {
             for (var y = 0; y < lines.length; y++) 
@@ -343,18 +341,18 @@ window.addEventListener("load", function() {
 
       }
 
+        //update line after moving nodes on graph
         for (var y = 0; y < lines.length; y++) 
         {
           lines[y].position();
         }
 
 
-     
-      console.log(lines);
+  
       
 });
 
-
+    //button to redirect to task page
     function myFunction(elem){
   document.location.href = location.href+"/"+elem;
 }
