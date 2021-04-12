@@ -251,6 +251,7 @@ window.addEventListener("load", function() {
     var connection = [];
     var ids = [];
     var lines = [];
+    var parents = [];
     console.log(nodesList);
 
 
@@ -260,6 +261,7 @@ window.addEventListener("load", function() {
       {
         connection[i]=[];
         ids.push(nodesList[i].id)
+        parents[i]=0;
 
       }
 
@@ -269,10 +271,11 @@ window.addEventListener("load", function() {
       for (var i = 0; i < nodesList.length; i++) 
       {
         var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
+        console.log(tmp);
         if(tmp)
         {
             var index = ids.indexOf(tmp);
-            connection[index].push(i);
+            //connection[index].push(i);
             connection[i].push(index);
         }
       }
@@ -287,6 +290,13 @@ window.addEventListener("load", function() {
         {
             console.log(document.getElementsByClassName("name active")[x*2])
             console.log(document.getElementsByClassName("name active")[x*connection[x][y]+1])
+
+            parents[connection[x][y]]=parents[connection[x][y]]+1;
+
+
+
+
+
 
 
 
@@ -312,7 +322,7 @@ window.addEventListener("load", function() {
 
       for (var x = 0; x < nodesList.length; x++) 
       {
-         nodesList[x].style.transform = "translate(" + (300*connection[x].length) + "px";  
+         nodesList[x].style.transform = "translate(" + (300*parents[x]) + "px";  
 
 
          new PlainDraggable(nodesList[x], {
