@@ -1,21 +1,21 @@
 class RolesController < ApplicationController
     def index
         # Returns all tasks in order by id
-        @role = Role.order(id: :asc)
+        @roles = Role.order(id: :asc)
     end
     def new
-        @role = Role.new
+        @roles = Role.new
     end
     def create
-        @role = Role.new(role_params)
-        if @role.save
-          redirect_to @role
+        @roles = Role.new(role_params)
+        if @roles.save
+          redirect_to @roles
         else
           render :new
         end
     end
 
     def role_params
-        params.require(:role).permit(:role_name)
+        params.require(:roles).permit(:role_name)
     end
 end
