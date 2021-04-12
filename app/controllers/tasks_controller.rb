@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
+    #redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @task = Task.new(task_params)
     if @task.save
       redirect_to @task
@@ -46,20 +46,20 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
+    #redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
   end
 
   def update
     @task = Task.find(params[:id])
-    if current_user.role == 'admin' || current_user.role == 'moderator'
+    #if current_user.role == 'admin' || current_user.role == 'moderator'
       if @task.update(task_params)
         redirect_to @task
       else
         render :edit
       end
-    else
-      render :new
-    end
+    #else
+      #render :new
+    #end
   end
 
   def destroy
