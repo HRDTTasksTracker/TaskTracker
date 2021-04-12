@@ -249,6 +249,7 @@ window.addEventListener("load", function() {
     
     var nodesList = document.getElementsByClassName("node");
     var connection = [];
+    var ids = [];
     var lines = [];
     console.log(nodesList);
 
@@ -258,6 +259,7 @@ window.addEventListener("load", function() {
        for (var i = 0; i < nodesList.length; i++) 
       {
         connection[i]=[];
+        ids.push(nodesList[i].id)
 
       }
 
@@ -269,8 +271,9 @@ window.addEventListener("load", function() {
         var tmp = nodesList[i].getElementsByClassName('node-name')[0].id
         if(tmp)
         {
-            connection[tmp-1].push(i);
-            connection[i].push(tmp-1);
+            var index = ids.findIndex(tmp);
+            connection[index].push(i);
+            connection[i].push(index);
         }
       }
 
