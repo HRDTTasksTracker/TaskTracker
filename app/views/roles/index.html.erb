@@ -1,0 +1,39 @@
+<%=render "header.html.erb"%>
+
+<!-- The page title header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="task-page-title">Roles</h1>
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<div id="overlay">
+  <span title="Create New Role">
+    <a href="roles/new">
+      <img class="create-button" src="/assets/create-button.png" alt="Create New Role Button" width="110px" height="110px">
+    </a>
+  </span>
+</div>
+
+<!-- This will list all the roles -->
+<body>
+<% if @roles %>
+  <% @roles.in_groups_of(1) do |group| %>
+    <div class="card-group">
+      <% group.compact.each do |roles| %>
+        <div class="card">
+            <a href="roles/<%= roles.id %>">
+              <div class="container">
+                <h4><b> <%=roles.role_name%> </b></h4>
+                <p>Role ID: <%=role.id%></p>
+              </div>
+            </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+</body>

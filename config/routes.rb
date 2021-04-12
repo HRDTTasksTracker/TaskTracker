@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :valid_emails
   resources :users # , only: [:new, :create]
+  resources :roles
 
   # get 'whitelist/new' to: ''
   get 'login', to: 'sessions#new'

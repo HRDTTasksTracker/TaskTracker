@@ -1,0 +1,14 @@
+<!-- Form to fill out when making a new role -->
+<%=render "header.html.erb"%>
+
+<!-- The page title header adjust the -->
+<!-- content to compensate for the fixed navigation bar -->
+<h1 class="task-page-title"></h1>
+
+<h1>New Role</h1>
+
+<div>
+  <button> <%= link_to "Home", "/index" %> </button>
+</div>
+
+<%= render "form", role: @role %>
