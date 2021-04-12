@@ -18,13 +18,15 @@
 
 
   <% if current_user.role == 'admin' || current_user.role == 'moderator' %>
-    <div>
-      <button>
-        <%= link_to "Delete", role_path(@roles),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-      </button>
-    </div>
+      <% if @roles.role_name != 'admin' %>
+      <div>
+        <button>
+          <%= link_to "Delete", role_path(@roles),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+        </button>
+      </div>
+    <% end %>
   <% end %>
 
 
