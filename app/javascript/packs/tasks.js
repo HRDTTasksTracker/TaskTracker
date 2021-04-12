@@ -26,7 +26,7 @@ window.addEventListener("load", function() {
         if(tmp)
         {
             connection[tmp-1].push(i);
-            //connection[i].push(tmp-1);
+            connection[i].push(tmp-1);
           }
       }
 
