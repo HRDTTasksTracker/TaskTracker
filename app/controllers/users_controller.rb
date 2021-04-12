@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
   skip_before_action :authorized, only: %i[new create]
 
   # shows all users
@@ -14,8 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new 
-    
+  def new
     # find any role type in roles table
     @search = Role.first
     # if there are no roles, add the defaults. (member, moderator, admin)
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
       @role = Role.new
       @role.role_name = 'admin'
       @role.save
-      
+
     end
 
     @user = User.new

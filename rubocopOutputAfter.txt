@@ -1,0 +1,10 @@
+Inspecting 75 files
+........C....................................................C.............
+
+Offenses:
+    ^^
+spec/models/tests.rb:5:1: C: Metrics/BlockLength: Block has too many lines. [100/33]
+RSpec.describe User, type: :model do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+75 files inspected, 1 offenses detected
