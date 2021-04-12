@@ -1,0 +1,490 @@
+Inspecting 75 files
+C...C.W.CCC.C.......CCC....CC..............................C.WCC...........
+
+Offenses:
+
+Gemfile:30:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem rexml should appear before rspec-rails.
+gem 'rexml'
+^^^^^^^^^^^
+Gemfile:31:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem brakeman should appear before rexml.
+gem 'brakeman'
+^^^^^^^^^^^^^^
+Gemfile:48:3: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem listen should appear before rack-mini-profiler.
+  gem 'listen', '~> 3.3'
+  ^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:27:22: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Cache-Control"] = "no-cache, no-store"
+                     ^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:27:41: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Cache-Control"] = "no-cache, no-store"
+                                        ^^^^^^^^^^^^^^^^^^^^
+app/controllers/application_controller.rb:28:22: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Pragma"] = "no-cache"
+                     ^^^^^^^^
+app/controllers/application_controller.rb:28:34: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Pragma"] = "no-cache"
+                                 ^^^^^^^^^^
+app/controllers/application_controller.rb:29:22: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Expires"] = "Mon, 01 Jan 1990 00:00:00 GMT"
+                     ^^^^^^^^^
+app/controllers/application_controller.rb:29:35: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    response.headers["Expires"] = "Mon, 01 Jan 1990 00:00:00 GMT"
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/roles_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class RolesController < ApplicationController
+^
+app/controllers/roles_controller.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def index
+^^^^
+app/controllers/roles_controller.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        @roles = Role.order(id: :asc)
+    ^^^^
+app/controllers/roles_controller.rb:6:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def new
+^^^^
+app/controllers/roles_controller.rb:6:5: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+    def new
+    ^^^^^^^
+app/controllers/roles_controller.rb:7:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        @roles = Role.new
+    ^^^^
+app/controllers/roles_controller.rb:9:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def create
+^^^^
+app/controllers/roles_controller.rb:9:5: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+    def create
+    ^^^^^^^^^^
+app/controllers/roles_controller.rb:10:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        @roles = Role.new(role_params)
+    ^^^^
+app/controllers/roles_controller.rb:17:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def show
+^^^^
+app/controllers/roles_controller.rb:17:5: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+    def show
+    ^^^^^^^^
+app/controllers/roles_controller.rb:18:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        @roles = Role.find(params[:id])
+    ^^^^
+app/controllers/roles_controller.rb:21:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def create
+^^^^
+app/controllers/roles_controller.rb:21:5: W: Lint/DuplicateMethods: Method RolesController#create is defined at both app/controllers/roles_controller.rb:9 and app/controllers/roles_controller.rb:21.
+    def create
+    ^^^^^^^^^^
+app/controllers/roles_controller.rb:22:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^^^
+app/controllers/roles_controller.rb:22:9: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+        if current_user.role != 'admin' && current_user.role != 'moderator'
+        ^^
+app/controllers/roles_controller.rb:33:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def destroy
+^^^^
+app/controllers/roles_controller.rb:34:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        @roles = Role.find(params[:id])
+    ^^^^
+app/controllers/roles_controller.rb:39:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def role_params
+^^^^
+app/controllers/roles_controller.rb:40:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        params.require(:role).permit(:role_name)
+    ^^^^
+app/controllers/tasks_controller.rb:4:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/tasks_controller.rb:15:30: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    if params[:tagsearch] == ""
+                             ^^
+app/controllers/tasks_controller.rb:21:5: C: Style/GuardClause: Use a guard clause (return unless Task.where(tag: params[:tagsearch]).count == 0) instead of wrapping the code inside a conditional expression.
+    if Task.where(tag: params[:tagsearch]).count == 0
+    ^^
+app/controllers/tasks_controller.rb:21:8: C: [Correctable] Style/NumericPredicate: Use Task.where(tag: params[:tagsearch]).count.zero? instead of Task.where(tag: params[:tagsearch]).count == 0.
+    if Task.where(tag: params[:tagsearch]).count == 0
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/tasks_controller.rb:24:66: C: [Correctable] Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.
+          window.location.replace(\"/tasks\")</script>".html_safe,
+                                                                 ^
+app/controllers/tasks_controller.rb:35:5: C: Style/GuardClause: Use a guard clause (return unless current_user.role != 'admin' && current_user.role != 'moderator') instead of wrapping the code inside a conditional expression.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/tasks_controller.rb:35:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/tasks_controller.rb:41:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/tasks_controller.rb:54:5: C: Style/GuardClause: Use a guard clause (return unless current_user.role != 'admin' && current_user.role != 'moderator') instead of wrapping the code inside a conditional expression.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/tasks_controller.rb:54:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/users_controller.rb:4:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+app/controllers/users_controller.rb:17:10: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  def new 
+         ^
+app/controllers/users_controller.rb:18:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:37:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/valid_emails_controller.rb:4:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+app/controllers/valid_emails_controller.rb:8:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:16:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:25:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:36:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:48:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:57:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if current_user.role != 'admin' && current_user.role != 'moderator'
+    ^^
+app/controllers/valid_emails_controller.rb:67:1: C: [Correctable] Layout/EmptyLinesAroundMethodBody: Extra empty line detected at method body end.
+app/helpers/roles_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module RolesHelper
+^
+app/helpers/roles_helper.rb:2:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+app/models/task.rb:5:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                ^^
+app/models/task.rb:5:51: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                  ^^
+app/models/task.rb:5:53: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                    ^^
+app/models/task.rb:5:73: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :task_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/task.rb:6:56: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_description, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                       ^^
+app/models/task.rb:6:58: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_description, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                         ^^
+app/models/task.rb:6:60: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :task_description, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                           ^^
+app/models/task.rb:6:80: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :task_description, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/task.rb:7:43: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :tag, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                          ^^
+app/models/task.rb:7:45: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :tag, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                            ^^
+app/models/task.rb:7:47: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :tag, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                              ^^
+app/models/task.rb:7:67: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :tag, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:11:48: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                               ^^
+app/models/user.rb:11:50: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                 ^^
+app/models/user.rb:11:52: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                   ^^
+app/models/user.rb:11:72: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:12:45: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                            ^^
+app/models/user.rb:12:47: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                              ^^
+app/models/user.rb:12:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                ^^
+app/models/user.rb:12:69: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:13:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :full_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                ^^
+app/models/user.rb:13:51: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :full_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                  ^^
+app/models/user.rb:13:53: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :full_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                    ^^
+app/models/user.rb:13:73: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :full_name, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:14:48: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :password, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                               ^^
+app/models/user.rb:14:50: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :password, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                 ^^
+app/models/user.rb:14:52: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :password, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                   ^^
+app/models/user.rb:14:72: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :password, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:15:45: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :phone, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                            ^^
+app/models/user.rb:15:47: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :phone, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                              ^^
+app/models/user.rb:15:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :phone, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                ^^
+app/models/user.rb:15:69: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :phone, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:16:56: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :discord_username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                       ^^
+app/models/user.rb:16:58: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :discord_username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                         ^^
+app/models/user.rb:16:60: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :discord_username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                           ^^
+app/models/user.rb:16:80: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :discord_username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:17:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/valid_email.rb:5:45: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                            ^^
+app/models/valid_email.rb:5:47: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                              ^^
+app/models/valid_email.rb:5:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                ^^
+app/models/valid_email.rb:5:69: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/webpack:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+#!/usr/bin/env ruby
+^
+bin/webpack:3:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+    ^^^^^^^^^^^
+bin/webpack:3:26: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+                         ^^^^^^^^^^
+bin/webpack:3:41: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+                                        ^^^^^^^^^^^^^
+bin/webpack:4:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["NODE_ENV"]  ||= "development"
+    ^^^^^^^^^^
+bin/webpack:4:22: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["NODE_ENV"]  ||= "development"
+                     ^^^^^^^^^^^^^
+bin/webpack:6:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "pathname"
+        ^^^^^^^^^^
+bin/webpack:7:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
+    ^^^^^^^^^^^^^^^^
+bin/webpack:7:44: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
+                                           ^^^^^^^^^^^^^^^
+bin/webpack:8:3: C: [Correctable] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+  Pathname.new(__FILE__).realpath)
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/webpack:10:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "bundler/setup"
+        ^^^^^^^^^^^^^^^
+bin/webpack:12:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "webpacker"
+        ^^^^^^^^^^^
+bin/webpack:13:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "webpacker/webpack_runner"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/webpack:15:29: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+APP_ROOT = File.expand_path("..", __dir__)
+                            ^^^^
+bin/webpack-dev-server:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+#!/usr/bin/env ruby
+^
+bin/webpack-dev-server:3:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+    ^^^^^^^^^^^
+bin/webpack-dev-server:3:26: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+                         ^^^^^^^^^^
+bin/webpack-dev-server:3:41: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
+                                        ^^^^^^^^^^^^^
+bin/webpack-dev-server:4:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["NODE_ENV"]  ||= "development"
+    ^^^^^^^^^^
+bin/webpack-dev-server:4:22: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["NODE_ENV"]  ||= "development"
+                     ^^^^^^^^^^^^^
+bin/webpack-dev-server:6:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "pathname"
+        ^^^^^^^^^^
+bin/webpack-dev-server:7:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
+    ^^^^^^^^^^^^^^^^
+bin/webpack-dev-server:7:44: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
+                                           ^^^^^^^^^^^^^^^
+bin/webpack-dev-server:8:3: C: [Correctable] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+  Pathname.new(__FILE__).realpath)
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/webpack-dev-server:10:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "bundler/setup"
+        ^^^^^^^^^^^^^^^
+bin/webpack-dev-server:12:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "webpacker"
+        ^^^^^^^^^^^
+bin/webpack-dev-server:13:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "webpacker/dev_server_runner"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bin/webpack-dev-server:15:29: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+APP_ROOT = File.expand_path("..", __dir__)
+                            ^^^^
+db/schema.rb:14:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body beginning.
+db/schema.rb:53:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+spec/models/tests.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'rails_helper'
+^
+spec/models/tests.rb:3:1: C: Metrics/BlockLength: Block has too many lines. [100/33]
+RSpec.describe User, type: :model do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:4:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body beginning.
+spec/models/tests.rb:13:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/")
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:22:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/")
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:24:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/users/new?")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:27:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+spec/models/tests.rb:29:33: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_full_name', :with => 'Admin'
+                                ^^^^^^^^
+spec/models/tests.rb:30:29: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_email', :with => 'admin@gmail.com'
+                            ^^^^^^^^
+spec/models/tests.rb:31:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_discord_username', :with => 'adminDiscord'
+                                       ^^^^^^^^
+spec/models/tests.rb:32:29: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_phone', :with => '1234567890'
+                            ^^^^^^^^
+spec/models/tests.rb:33:32: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_username', :with => 'adminUsername'
+                               ^^^^^^^^
+spec/models/tests.rb:34:32: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_password', :with => 'Password'
+                               ^^^^^^^^
+spec/models/tests.rb:46:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/")
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:48:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/users/new?")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:51:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+spec/models/tests.rb:53:33: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_full_name', :with => 'John Doe'
+                                ^^^^^^^^
+spec/models/tests.rb:54:29: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_email', :with => 'JohnDoe@gmail.com'
+                            ^^^^^^^^
+spec/models/tests.rb:55:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_discord_username', :with => 'JohnDoeDiscord'
+                                       ^^^^^^^^
+spec/models/tests.rb:56:29: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_phone', :with => '1234567890'
+                            ^^^^^^^^
+spec/models/tests.rb:57:32: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_username', :with => 'JohnDoeUsername'
+                               ^^^^^^^^
+spec/models/tests.rb:58:32: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'user_password', :with => 'JohnDoePassword'
+                               ^^^^^^^^
+spec/models/tests.rb:69:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/")
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:75:27: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'username', :with => 'adminUsername'
+                          ^^^^^^^^
+spec/models/tests.rb:76:27: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'password', :with => 'Password'
+                          ^^^^^^^^
+spec/models/tests.rb:82:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+spec/models/tests.rb:88:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/")
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:94:27: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'username', :with => 'adminUsername'
+                          ^^^^^^^^
+spec/models/tests.rb:95:27: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'password', :with => 'Password'
+                          ^^^^^^^^
+spec/models/tests.rb:101:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/tasks/new")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:105:33: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'task_task_name', :with => 'Task_01'
+                                ^^^^^^^^
+spec/models/tests.rb:106:34: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'task_claimed_by', :with => 'Admin'
+                                 ^^^^^^^^
+spec/models/tests.rb:107:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'task_task_description', :with => 'description for task'
+                                       ^^^^^^^^
+spec/models/tests.rb:108:27: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'task_tag', :with => 'TagName'
+                          ^^^^^^^^
+spec/models/tests.rb:113:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+spec/models/tests.rb:119:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/roles")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:121:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/roles/new")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:124:7: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+      #fill in fields
+      ^^^^^^^^^^^^^^^
+spec/models/tests.rb:125:33: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      fill_in 'role_role_name', :with => 'newRole'
+                                ^^^^^^^^
+spec/models/tests.rb:129:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit("http://localhost:3000/roles")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:136:12: W: [Correctable] Lint/ParenthesesAsGroupedExpression: (...) interpreted as grouped expression.
+      visit ("http://localhost:3000/valid_emails/new")
+           ^
+spec/models/tests.rb:136:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      visit ("http://localhost:3000/valid_emails/new")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/tests.rb:139:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+spec/rails_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+^
+spec/rails_helper.rb:6:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/spec_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# This file was generated by the `rails generate rspec:install` command. Conventionally, all
+^
+spec/spec_helper.rb:49:1: C: [Correctable] Style/BlockComments: Do not use block comments.
+=begin ...
+^^^^^^
+
+75 files inspected, 171 offenses detected, 166 offenses auto-correctable

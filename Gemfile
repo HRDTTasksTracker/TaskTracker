@@ -26,9 +26,9 @@ gem 'jbuilder', '~> 2.7'
 #   https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/
 #   https://www.sitepoint.com/basics-capybara-improving-tests/
 #   https://learn.co/lessons/intro-to-capybara
-gem 'rspec-rails'
-gem 'rexml'
 gem 'brakeman'
+gem 'rexml'
+gem 'rspec-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -44,8 +44,8 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
 end
 
 group :test do

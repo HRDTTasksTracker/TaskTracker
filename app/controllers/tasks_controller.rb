@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  
   def index
     # Returns all tasks in order by id
     @tasks = Task.order(id: :asc)
@@ -12,16 +11,16 @@ class TasksController < ApplicationController
     @tasks = Task.where(tag: params[:tagsearch])
 
     # if noting was entered, then just reload the /tasks page
-    if params[:tagsearch] == ""
+    if params[:tagsearch] == ''
       redirect_to '/tasks'
       return
     end
 
     # if nothing returned on a search, then display error message and redirect to /tasks
-    if Task.where(tag: params[:tagsearch]).count == 0
+    if Task.where(tag: params[:tagsearch]).count.zero? == true
       render(
         html: "<script>alert('Nothing Found');
-          window.location.replace(\"/tasks\")</script>".html_safe,
+          window.location.replace(\"/tasks\")</script>".html_safe
       )
     end
   end
@@ -32,15 +31,11 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
   end
 
   def create
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @task = Task.new(task_params)
     if @task.save
       redirect_to @task
@@ -51,9 +46,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
   end
 
   def update

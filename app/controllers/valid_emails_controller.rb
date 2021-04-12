@@ -1,30 +1,23 @@
 # frozen_string_literal: true
 
 class ValidEmailsController < ApplicationController
-
   # will show all whitelisted emails
   def index
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @valid_emails = ValidEmail.all.order(id: :asc)
   end
 
   def new
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @valid_email = ValidEmail.new
   end
 
   # shows a particular vaild email with id: id
   def show
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @valid_email = ValidEmail.find(params[:id])
   end
 
@@ -33,9 +26,7 @@ class ValidEmailsController < ApplicationController
     @valid_email = ValidEmail.new(valid_email_params)
     @valid_email.in_use = false
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     if @valid_email.save
       redirect_to '/valid_emails'
     else
@@ -45,18 +36,14 @@ class ValidEmailsController < ApplicationController
 
   def edit
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
     @valid_email = ValidEmail.find(params[:id])
   end
 
   # same protections as edit to have double protection
   def update
     # only allow admins and moderators to whitelist emails
-    if current_user.role != 'admin' && current_user.role != 'moderator'
-      redirect_to '/tasks'
-    end
+    redirect_to '/tasks' if current_user.role != 'admin' && current_user.role != 'moderator'
 
     @valid_email = ValidEmail.find(params[:id])
     if @valid_email.update(valid_email_params)
@@ -64,7 +51,6 @@ class ValidEmailsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def destroy

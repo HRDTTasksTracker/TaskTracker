@@ -352,6 +352,8 @@
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/environment.rb": {
         "lines": [
           null,
+          null,
+          null,
           1,
           null,
           null,
@@ -360,6 +362,8 @@
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/environments/test.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           null,
@@ -430,11 +434,14 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/initializers/assets.rb": {
         "lines": [
+          null,
+          null,
           null,
           null,
           null,
@@ -453,6 +460,8 @@
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/initializers/backtrace_silencers.rb": {
         "lines": [
+          null,
+          null,
           null,
           null,
           null,
@@ -494,6 +503,7 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
@@ -503,11 +513,15 @@
           null,
           null,
           null,
+          null,
+          null,
           1
         ]
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/initializers/filter_parameter_logging.rb": {
         "lines": [
+          null,
+          null,
           null,
           null,
           null,
@@ -533,6 +547,7 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
@@ -541,11 +556,13 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/initializers/permissions_policy.rb": {
         "lines": [
+          null,
           null,
           null,
           null,
@@ -567,8 +584,10 @@
           null,
           null,
           null,
+          null,
+          null,
           1,
-          0,
+          2,
           null,
           null,
           null,
@@ -579,14 +598,18 @@
       },
       "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/config/routes.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
           1,
           1,
           1,
+          1,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -595,8 +618,189 @@
           1,
           null
         ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/controllers/sessions_controller_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/controllers/tasks_controller_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/controllers/valid_email_controller_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/models/login_cred_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/models/role_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/models/task_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/models/user_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/test/models/valid_email_test.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/app/models/role.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/app/models/application_record.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/app/models/task.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/johnpatranella/Google Drive/GitHub/Repos/TaskTracker/app/models/valid_email.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1615260584
+    "timestamp": 1618223710
   }
 }
