@@ -24,7 +24,7 @@ class RolesController < ApplicationController
         end
         @roles = Role.new(role_params)
         if @roles.save
-          redirect_to @roles
+          redirect_to '/roles'
         else
           render :new
         end
