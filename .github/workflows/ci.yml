@@ -52,8 +52,7 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Install dependencies
         run: |
-          gem install bundler:2.2.8 --full-index
-          bundle update --conservative mimemagic
+          gem install bundler:2.2.8 
           bundle update marcel
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
