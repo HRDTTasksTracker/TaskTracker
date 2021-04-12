@@ -6,7 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # ruby '2.7.2'
 ruby '3.0.0'
 
-gem 'rexml'
 gem 'rails_12factor', groups: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
