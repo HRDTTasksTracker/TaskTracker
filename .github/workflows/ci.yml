@@ -54,6 +54,7 @@ jobs:
         run: |
           gem install bundler:2.2.8
           bundle update --conservative mimemagic
+          bundle update marcel
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           yarn install --frozen-lockfile
