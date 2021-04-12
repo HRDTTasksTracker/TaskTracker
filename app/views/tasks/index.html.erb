@@ -227,7 +227,6 @@ body {
 
 <!-- This will list all the task id and task names -->
 <body id="container">
-  <div>
   <% @tasks.in_groups_of(1) do |group| %>
     <div class="card-group">
       <% group.compact.each do |task| %>
@@ -279,6 +278,7 @@ body {
         
       </div>
       <% end %>
+
 
 </body>
 
@@ -365,18 +365,11 @@ window.addEventListener("load", function() {
      
       console.log(lines);
       
-    
-  
-
-
-
-
-  
 });
 
 
     function myFunction(elem){
-  document.location.href = "https://powerful-waters-96115.herokuapp.com/tasks/"+elem;
+  document.location.href = location.href+"/"+elem;
 }
 
 
