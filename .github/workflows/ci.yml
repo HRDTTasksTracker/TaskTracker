@@ -65,8 +65,8 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           PG_USER: postgres
         run: |
-          bin/rails db:test:prepare
-          bin/rails test
+          rails db:test:prepare
+          rails test
   Deploy:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: Test
