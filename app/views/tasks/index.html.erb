@@ -35,7 +35,7 @@
               <div class="container">
                 <h4><b> <%=task.task_name%> </b></h4>
                 <p>Task ID: <%=task.id%></p>
-                <p>Due Date: <%=task.due_date%></p>
+                <p>Due Date: <%=task.due_date.strftime('%Y-%m-%d')%></p>
                 <p>Description: <%=task.task_description%></p>
                 <p>Tag: <%=task.tag%></p>
               </div>
