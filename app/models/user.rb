@@ -5,8 +5,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :role, presence: true
   validates :password, presence: true, length: { minimum: 6 }
-  validates :phone, presence: true, length: { minimum: 10 }
-  validates :phone, presence: true, length: { maximum: 10 }
   validates :full_name, presence: true
   validates :username, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
   validates :email, format: { with: /\A[\w\d\.\_\@\ ]*\z/, message: "Please do not use special characters." }
