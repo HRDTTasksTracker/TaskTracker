@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-
-  layout "header"  #the header for the pages
   
   def index
     # Returns all tasks in order by id
