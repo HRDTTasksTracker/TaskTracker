@@ -25,16 +25,16 @@ To initialize the database
 
 You can add your own test in the test.rb file.
 
+# CI/CD
 
+Every time a pull request is made a GitHub action runs.
+This action will run test cases on the new code to ensure no ppreviously working test cases have been broken.
+If your new code does not pass test cases, then you will need to fix the bugs and resubmit the pull request.
 
+# Deployment to Heroku
 
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions  
+1. Setup a pipeline on Heroku
+2. Connect it to this GitHub repository
+3. In the settings on the Heroku pipeline, turn on automatic deployments
+4. When a pull request is accepted, the app will automatically build on the pipeline
+5. If it is the first Heroku build, you will need to open the bash and run ```rails db:migrate```
