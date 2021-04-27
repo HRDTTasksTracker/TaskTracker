@@ -1,6 +1,6 @@
 # TaskTracker
 
-ruby version 3.0
+ruby version 3.0 
 
 # If App Fails to Compile
 
