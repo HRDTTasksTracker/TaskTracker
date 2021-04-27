@@ -2,7 +2,10 @@
 
 ruby version 3.0 
 
-# If App Fails to Compile
+# Compiling
+
+1. run ```rails server``` in the terminal. Be sure you are in the root app directory.
+2. open a brower and visit "localhost"
 
 1. run ```bundle``` while in the applications root directory
 2. run ```rails webpacker:install```
