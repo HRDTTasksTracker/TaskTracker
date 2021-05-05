@@ -26,9 +26,12 @@ To initialize the database
 You can add your own test in the test.rb file.
 
 # CI/CD
-
-Every time a pull request is made a GitHub action runs.
-This action will run test cases on the new code to ensure no ppreviously working test cases have been broken.
+There are several CI tests already created through Github actions for this application.
+This action runs everytime a pull request is made by the main branch.
+These automated tests can be found .github/workflows/ci.yml
+You can view the workflow that runs these tests under the Github actions tab.
+If you need to create more tests, create a workflow under Actions and save the file in the workflow folder.
+This action will run test cases on the new code to ensure no previously working test cases have been broken.
 If your new code does not pass test cases, then you will need to fix the bugs and resubmit the pull request.
 
 # Deployment to Heroku
