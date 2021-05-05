@@ -33,7 +33,7 @@ These automated tests can be found .github/workflows/ci.yml
 
 You can view the workflow that runs these tests under the Github actions tab.
 
-If you need to create more tests, create a workflow under Actions and save the file in the workflow folder.
+If you need to create more tests, create a workflow under Actions and save the file under .github/workflows.
 This action will run test cases on the new code to ensure no previously working test cases have been broken.
 
 If your new code does not pass test cases, then you will need to fix the bugs and resubmit the pull request.
